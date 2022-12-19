@@ -1,0 +1,7 @@
+---
+database:
+  ip: 192xxx
+  user: test
+  password: xxx
+
+...
