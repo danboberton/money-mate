@@ -17,7 +17,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Card/>
+      <Card/>  {/*New Component*/}
     </div>
   );
 }
