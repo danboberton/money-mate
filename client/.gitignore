@@ -11,6 +11,7 @@
 # production
 /build
 
+# development
 /dev-build
 
 # misc
