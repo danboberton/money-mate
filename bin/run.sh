@@ -30,8 +30,9 @@ print_header(){
 
 check_docker_container_running()
 {
-  # TODO
-  echo "Checking param $1 "
+  #TODO: implement
+  print_error "not actually sure if mongo database is already running"
+  return 1
 }
 
 acquire_current_mongo()
@@ -60,9 +61,17 @@ check_for_docker()
 run_dev(){
   print_header "Running Dev"
   check_docker_container_running $MONGO_IMAGE
-  cd $REPO_ROOT/client && npm run dev
+  cd $REPO_ROOT/client && npm run dev &
+
+  if [ $($check_docker_container_running) -eq 0 ]; then
+    print_success "Starting mongo docker container"
+    cd $REPO_ROOT && docker compose up
+  else
+    echo "mongo container running."
+  fi
   # TODO: run backend server
-  # get pids
+  # get pids for kills
+
 }
 
 run_init(){
