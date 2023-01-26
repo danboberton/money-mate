@@ -1,5 +1,6 @@
-# db
+# homeapp
 test-data/
+runlog.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
