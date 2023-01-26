@@ -1,0 +1,13 @@
+version: "0.1"
+services:
+  mongodb:
+    image : mongo:latest
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./database/mock_data:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
