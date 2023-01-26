@@ -3,7 +3,7 @@
 
 MONGO_IMAGE="mongo:latest"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
-LOGGING=1
+LOGGING=1 #true
 LOG_LOCATION="runlog.log"
 
 local_log()
@@ -27,13 +27,6 @@ print_header(){
   echo -e "\033[37;1;46m$1\033[0m"
   local_log "$1"
   }
-
-check_docker_container_running()
-{
-  #TODO: implement
-  print_error "not actually sure if mongo database is already running"
-  return 1
-}
 
 acquire_current_mongo()
 {
@@ -60,15 +53,9 @@ check_for_docker()
 # Run arguments
 run_dev(){
   print_header "Running Dev"
-  check_docker_container_running $MONGO_IMAGE
-  cd $REPO_ROOT/client && npm run dev &
+  cd "$REPO_ROOT"/client && npm run dev &
+  cd "$REPO_ROOT" && docker compose up &
 
-  if [ $($check_docker_container_running) -eq 0 ]; then
-    print_success "Starting mongo docker container"
-    cd $REPO_ROOT && docker compose up
-  else
-    echo "mongo container running."
-  fi
   # TODO: run backend server
   # get pids for kills
 
@@ -81,15 +68,23 @@ run_init(){
 }
 
 run_stop(){
-  print_header "Stopping"
+  print_header "Running Stop"
+  WEBPACK_PID=$(pgrep webpack)
+  if [ "$WEBPACK_PID" != "" ] && [ "$WEBPACK_PID" -gt 0 ]; then
+    echo "Found webpack, pid: $WEBPACK_PID, killing..."
+    kill "$WEBPACK_PID"
+  else
+    print_error "Webpack pid not found, maybe it wasn't running."
+  fi
+
+  echo "Stopping docker..."
+  cd "$REPO_ROOT" && docker compose down
   # TODO:
-  # Stop docker database container
   # Stop backend
-  # Stop npm run server
 }
 
 
-# RUN
+# RUN and parse arguments
 if  [ $# -eq 0 ] || [ $1 == "dev" ]; then
   run_dev
 elif [ $1 == "init" ]; then

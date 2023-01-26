@@ -1,0 +1,6 @@
+.bash_history
+.mongodb
+diagnostic*
+journal
+journal/*
+WiredTiger*
