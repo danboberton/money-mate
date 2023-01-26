@@ -1,0 +1,4 @@
+db.account.insertMany([{tx_id: 1, amount: 3.50, description: "test tx1", budgets: ["groceries", "gas"]}])
+show dbs
+db.createCollection("account")
+show dbs
