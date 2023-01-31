@@ -7,6 +7,8 @@ LOGGING=1 #true
 LOG_LOCATION="runlog.log"
 PYTHON_DEPS=('Flask' 'pymongo')
 
+FLASK_SERVER_FILE_NAME="flaskServer.py"
+
 local_log()
 {
   if [ $LOGGING -eq 1 ]; then
@@ -70,7 +72,7 @@ run_dev(){
   print_success "Running Docker compose"
   cd "$REPO_ROOT" && docker compose up &
   print_success "Running flask backend"
-  python3 "$REPO_ROOT"/server/src/server/flaskServer.py &
+  python3 "$REPO_ROOT"/server/src/server/"$FLASK_SERVER_FILE_NAME" &
   print_success "Running webpack and browser"
   cd "$REPO_ROOT"/client && npm run dev &
 
@@ -95,16 +97,23 @@ run_stop(){
   print_header "Running Stop"
   WEBPACK_PID=$(pgrep webpack)
   if [ "$WEBPACK_PID" != "" ] && [ "$WEBPACK_PID" -gt 0 ]; then
-    echo "Found webpack, pid: $WEBPACK_PID, killing..."
+    print_success "Found webpack, pid: $WEBPACK_PID, killing..."
     kill "$WEBPACK_PID"
   else
-    print_error "Webpack pid not found, maybe it wasn't running."
+    print_error "Webpack pid not found, maybe it wasn't running?"
   fi
 
-  echo "Stopping docker..."
+  print_success "Stopping docker..."
   cd "$REPO_ROOT" && docker compose down
-  # TODO:
-  # Stop backend
+
+  print_success "Stopping backend..."
+  FLASK_PID=$(pgrep -f "$FLASK_SERVER_FILE_NAME")
+  if [ "$FLASK_PID" != "" ] && [ "$FLASK_PID" -gt 0 ]; then
+    print_success "Found flask server, pid: $FLASK_PID, killing..."
+    kill "$FLASK_PID"
+  else
+    print_error "Flask pid not found, maybe it wasn't running?"
+  fi
 }
 
 
