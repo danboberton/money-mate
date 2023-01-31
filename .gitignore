@@ -2,7 +2,7 @@
 test-data/
 runlog.log
 # Where all the local mongo container data lives
-database
+database/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
