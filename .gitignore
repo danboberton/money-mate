@@ -1,7 +1,7 @@
 # homeapp
 test-data/
 runlog.log
-database/*
+database/* # Where all the local mongo container data lives
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

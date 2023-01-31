@@ -5,6 +5,7 @@ MONGO_IMAGE="mongo:latest"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 LOGGING=1 #true
 LOG_LOCATION="runlog.log"
+PYTHON_DEPS=('flask' 'pymongo')
 
 local_log()
 {
@@ -12,6 +13,10 @@ local_log()
     echo "$(date) $1" >> $REPO_ROOT/$LOG_LOCATION
   fi
 }
+print_log(){
+  echo "$1"
+  local_log "$1"
+  }
 
 print_error(){
   echo -e "\033[31;1m$1\033[0m"
@@ -39,15 +44,23 @@ acquire_current_mongo()
   fi
 }
 
-check_for_docker()
+check_for_command()
 {
-  echo "Checking for docker."
-  if [ "$( type docker )" == "" ]; then
-    print_error "docker not found, please install docker."
+  echo "Checking for $1."
+  if [ "$( type "$1" )" == "" ]; then
+    print_error "$1 not found, please install $1."
     exit 1
   else
-    print_success "docker found"
+    print_success "$1 found"
   fi
+}
+
+install_python_deps()
+{
+  for d in "${PYTHON_DEPS[@]}"; do
+    print_log "Installing $d"
+    pip install "$d"
+done
 }
 
 # Run arguments
@@ -63,9 +76,14 @@ run_dev(){
 
 run_init(){
   print_header "Running Init"
+  print_log "Running npm install."
   cd "$REPO_ROOT"/client && npm install
-  check_for_docker
+  check_for_command "docker"
   acquire_current_mongo
+  check_for_command "python3"
+  print_log "Installing python dependencies."
+  install_python_deps
+
 }
 
 run_stop(){

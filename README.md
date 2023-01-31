@@ -6,10 +6,8 @@ python3 3.10.6
 docker
 
 ## python deps
-pandas
-mariadb
-pyyaml
 flask
+pymongo
 
 ## docker images
 mongo:latest
