@@ -1,7 +1,7 @@
 import flask.json
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask("budget-app")
 
 
 @app.route("/")
@@ -12,6 +12,11 @@ def hello_world():
 @app.route("/api/test", methods=['GET'])
 def test_api():
     test_obj = {
-        "test1": "test"
+        "name": "test",
+        "budgetedAmount": 100,
+        "budgetSpent": 50
     }
     return flask.json.jsonify(test_obj)
+
+
+app.run()

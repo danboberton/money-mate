@@ -1,14 +1,13 @@
+import {getFromBackend} from "../utils/api";
+
 export default function BudgetCategory(props){
-    const mockBudget = {
-        "name" : "Food",
-        "budgetedAmount" : 200.0,
-        "budgetSpent" : 125.83
-    }
+    const mockBudget = getFromBackend()
 
     return(
         <div
             className="BudgetCategory"
             data-testid={"BudgetCategory" + "-" + props.key}>
+            <h1>This data below came from the backend api</h1>
             <h2>
                 name: {mockBudget.name}<br/>
                 amount: {mockBudget.budgetedAmount}<br/>
