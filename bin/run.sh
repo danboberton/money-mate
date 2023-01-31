@@ -66,8 +66,6 @@ run_init(){
   cd "$REPO_ROOT"/client && npm install
   check_for_docker
   acquire_current_mongo
-
-  run_dev
 }
 
 run_stop(){
