@@ -63,8 +63,11 @@ run_dev(){
 
 run_init(){
   print_header "Running Init"
+  cd "$REPO_ROOT"/client && npm install
   check_for_docker
   acquire_current_mongo
+
+  run_dev
 }
 
 run_stop(){
