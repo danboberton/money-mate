@@ -5,7 +5,7 @@ MONGO_IMAGE="mongo:latest"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 LOGGING=1 #true
 LOG_LOCATION="runlog.log"
-PYTHON_DEPS=('flask' 'pymongo')
+PYTHON_DEPS=('Flask' 'pymongo')
 
 local_log()
 {
@@ -58,6 +58,7 @@ check_for_command()
 install_python_deps()
 {
   for d in "${PYTHON_DEPS[@]}"; do
+    # TODO: Check for plugin before blindly installing?
     print_log "Installing $d"
     pip install "$d"
 done
@@ -66,11 +67,15 @@ done
 # Run arguments
 run_dev(){
   print_header "Running Dev"
-  cd "$REPO_ROOT"/client && npm run dev &
+  print_success "Running Docker compose"
   cd "$REPO_ROOT" && docker compose up &
+  print_success "Running flask backend"
+  python3 "$REPO_ROOT"/server/src/server/flaskServer.py &
+  print_success "Running webpack and browser"
+  cd "$REPO_ROOT"/client && npm run dev &
 
-  # TODO: run backend server
-  # get pids for kills
+
+  # TODO: get pids for kills
 
 }
 
