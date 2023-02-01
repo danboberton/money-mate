@@ -16,7 +16,10 @@ def test_api():
         "budgetedAmount": 100,
         "budgetSpent": 50
     }
-    return flask.json.jsonify(test_obj)
+
+    response = flask.json.jsonify(test_obj)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
 app.run()

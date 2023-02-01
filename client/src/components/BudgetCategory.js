@@ -1,7 +1,19 @@
 import {getFromBackend} from "../utils/api";
+import {useEffect, useState} from "react";
 
 export default function BudgetCategory(props){
-    const mockBudget = getFromBackend()
+    const defaultMockBudget = {
+            "name" : "waiting for API",
+            "budgetedAmount": "waiting for API",
+            "budgetSpent": "waiting for API"
+        }
+    const [mockBudget, setMockBudget] = useState(defaultMockBudget);
+
+    useEffect(() => {
+        getFromBackend().then((data) => {
+        setMockBudget(data)});
+    }, [])
+
 
     return(
         <div
@@ -13,6 +25,6 @@ export default function BudgetCategory(props){
                 amount: {mockBudget.budgetedAmount}<br/>
                 spent: {mockBudget.budgetSpent}<br/>
             </h2>
-        </div>
+        </div>  
     )
 }
