@@ -12,7 +12,7 @@ FLASK_SERVER_FILE_NAME="flaskServer.py"
 local_log()
 {
   if [ $LOGGING -eq 1 ]; then
-    echo "$(date) $1" >> $REPO_ROOT/$LOG_LOCATION
+    echo "$(date) $1" >> "$REPO_ROOT/$LOG_LOCATION"
   fi
 }
 print_log(){

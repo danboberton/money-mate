@@ -25,6 +25,6 @@ export default function BudgetCategory(props){
                 amount: {mockBudget.budgetedAmount}<br/>
                 spent: {mockBudget.budgetSpent}<br/>
             </h2>
-        </div>  
+        </div>
     )
 }

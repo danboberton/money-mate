@@ -1,14 +1,5 @@
-# budget_app
+# README
 
-## Major Dependencies
-nodejs 19.3.0
-python3 3.10.6
-docker
+## Budget-App
 
-## python deps
-flask
-pymongo
-
-## docker images
-mongo:latest
 

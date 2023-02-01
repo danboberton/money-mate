@@ -22,4 +22,16 @@ def test_api():
     return response
 
 
+@app.route("/api/mongoInsert", methods=['POST'])
+def mongo_insert():
+    # TODO: pass Post object in to mongo database
+    pass
+
+
+@app.route("/api/mongoGet", methods=['GET'])
+def mongo_get():
+    # TODO: retrieve object from database
+    pass
+
+
 app.run()
