@@ -14,5 +14,22 @@ class Database:
         except pymongo.errors.Any as err:
             print(err)
 
-    def insert(self, database, collection, documents: list):
-        returnID = self.client.database.collection.insertMany(documents)
+    def insert(self, database: str, collection: str, documents: list):
+        db = self.client[database]
+        collection = db[collection]
+        if len(documents) == 1:
+            return collection.insert_one(documents[0])
+        elif len(documents) > 1:
+            return collection.insert_many(documents)
+        else:
+            raise Exception("No document provided")
+
+    def query(self, database: str, collection: str, query: dict):
+        db = self.client[database]
+        collection = db[collection]
+        return collection.find(query)
+
+    def deleteDocument(self, database: str, collection: str, query: dict):
+        db = self.client[database]
+        collection = db[collection]
+        return collection.delete_many(query)
