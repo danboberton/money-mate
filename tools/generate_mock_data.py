@@ -45,7 +45,7 @@ def rnd_classification(target: dict, empty=True):
 def rnd_description(target: dict):
     target["discription"] = lorem.sentence()
 
-
+# generates an array of size n objects
 def get_mock_data(numberOfMockData: int):
     result = list()
 
