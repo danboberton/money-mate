@@ -1,5 +1,6 @@
 import pytest
 
+
 from server.src.budget.database import Database
 
 

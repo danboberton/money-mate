@@ -6,8 +6,8 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-    volumes:
-      - ./database/mock_data:/data/db
+#    volumes:
+#      - ./database/mock_data:/data/db
     ports:
       - 27017:27017
     restart: unless-stopped
