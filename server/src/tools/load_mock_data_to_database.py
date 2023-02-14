@@ -24,5 +24,5 @@ tx = loadJSON(repo_root + MOCK_TRANSACTIONS)
 
 db = Database("127.0.0.1", 27017)
 insertResult = db.insert("mock_data", "transactions", tx)
-result = db.query("mock_data", "tranactions", {})
+result = db.query("mock_data", "transactions", {})
 print(result)
