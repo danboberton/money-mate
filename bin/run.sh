@@ -62,7 +62,7 @@ install_python_deps()
   for d in "${PYTHON_DEPS[@]}"; do
     # TODO: Check for plugin before blindly installing?
     print_log "Installing $d"
-    pip install "$d"
+    pip3 install "$d"
 done
 }
 
@@ -87,6 +87,7 @@ run_init(){
   cd "$REPO_ROOT"/client && npm install
   check_for_command "docker"
   acquire_current_mongo
+  check_for_command "pip"
   check_for_command "python3"
   print_log "Installing python dependencies."
   install_python_deps
