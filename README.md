@@ -1,5 +1,5 @@
 # README
 
-## Budget-App
+## Money-Mate
 
 
