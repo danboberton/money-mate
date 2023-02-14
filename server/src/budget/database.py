@@ -1,28 +1,35 @@
-# Module Imports
-import mariadb
-import sys
+import pymongo.errors
 
-# Connect to MariaDB Platform
-try:
-    conn = mariadb.connect(
-        user="db_user",
-        password="db_user_passwd",
-        host="192.0.2.1",
-        port=3306,
-        database="employees"
+from pymongo import MongoClient
 
-    )
-except mariadb.Error as e:
-    print(f"Error connecting to MariaDB Platform: {e}")
-    sys.exit(1)
 
-# Get Cursor
-cur = conn.cursor()
+class Database:
 
-cur.execute(
-    "SELECT first_name,last_name FROM employees WHERE first_name=?",
-    (some_name,))
+    def __init__(self, ip, port):
+        try:
+            self.client = MongoClient(ip, port)
+            if not 1 == 1:
+                pass
 
-# Print Result-set
-for (first_name, last_name) in cur:
-    print(f"First Name: {first_name}, Last Name: {last_name}")
+        except pymongo.errors.Any as err:
+            print(err)
+
+    def insert(self, database: str, collection: str, documents: list):
+        db = self.client[database]
+        collection = db[collection]
+        if len(documents) == 1:
+            return collection.insert_one(documents[0])
+        elif len(documents) > 1:
+            return collection.insert_many(documents)
+        else:
+            raise Exception("No document provided")
+
+    def query(self, database: str, collection: str, query: dict):
+        db = self.client[database]
+        collection = db[collection]
+        return collection.find(query)
+
+    def deleteDocument(self, database: str, collection: str, query: dict):
+        db = self.client[database]
+        collection = db[collection]
+        return collection.delete_many(query)

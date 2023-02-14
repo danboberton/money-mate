@@ -8,6 +8,8 @@
 ## python packages
 * flask
 * pymongo
+* pytest
+* pyenv (nice for python virtual environment management) [pyenv here](https://realpython.com/intro-to-pyenv/)
 
 ## docker images
 * mongo:latest
