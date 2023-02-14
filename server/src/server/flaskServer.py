@@ -1,6 +1,5 @@
 import flask.json
 from flask import Flask
-import
 
 app = Flask("budget-app")
 
