@@ -90,6 +90,7 @@ run_init(){
   check_for_command "pip"
   check_for_command "python3"
   check_for_command "npm"
+  check_for_command "docker"
   print_log "Installing python dependencies."
   install_python_deps
 
