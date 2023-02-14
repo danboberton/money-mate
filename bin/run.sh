@@ -89,6 +89,7 @@ run_init(){
   acquire_current_mongo
   check_for_command "pip"
   check_for_command "python3"
+  check_for_command "npm"
   print_log "Installing python dependencies."
   install_python_deps
 
