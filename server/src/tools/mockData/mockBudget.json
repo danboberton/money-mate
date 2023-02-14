@@ -1,0 +1,26 @@
+{
+  "budgetID": "007",
+  "budgetName": "Mock Budget",
+  "budgetCategories": [
+    {
+      "category": "Regular Salary",
+      "amount": 300.00,
+      "type": "monthlyIncome"
+    },
+    {
+      "category": "Side Hustle",
+      "amount": 300.00,
+      "type": "runningIncome"
+    },
+    {
+      "category": "Groceries",
+      "amount": 300.00,
+      "type": "monthlyExpense"
+    },
+    {
+      "category": "Vacation",
+      "amount": 300.00,
+      "type": "runningExpense"
+    }
+  ]
+}
