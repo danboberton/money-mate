@@ -1,7 +1,7 @@
 import pytest
 
 
-from server.src.budget.database import Database
+from budget.database import Database
 
 
 @pytest.fixture

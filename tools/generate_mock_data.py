@@ -45,6 +45,9 @@ def rnd_classification(target: dict, empty=True):
 def rnd_description(target: dict):
     target["discription"] = lorem.sentence()
 
+def rnd_month(target: dict):
+    target["month"] = datetime
+
 # generates an array of size n objects
 def get_mock_data(numberOfMockData: int):
     result = list()
@@ -59,6 +62,7 @@ def get_mock_data(numberOfMockData: int):
         rnd_date(item)
         rnd_description(item)
         rnd_classification(item)
+        rnd_month(item)
 
         result.append(item)
 
@@ -66,7 +70,7 @@ def get_mock_data(numberOfMockData: int):
 
 
 if __name__ == "__main__":
-    data = get_mock_data(150)
+    data = get_mock_data(15)
     print(data)
     file = open("mockData/mockData1.json", "w")
     file.write(json.dumps(data))
