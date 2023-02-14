@@ -62,7 +62,7 @@ install_python_deps()
   for d in "${PYTHON_DEPS[@]}"; do
     # TODO: Check for plugin before blindly installing?
     print_log "Installing $d"
-    pip3 install "$d"
+    pip install "$d"
 done
 }
 
