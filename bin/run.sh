@@ -87,7 +87,10 @@ run_init(){
   cd "$REPO_ROOT"/client && npm install
   check_for_command "docker"
   acquire_current_mongo
+  check_for_command "pip"
   check_for_command "python3"
+  check_for_command "npm"
+  check_for_command "docker"
   print_log "Installing python dependencies."
   install_python_deps
 
