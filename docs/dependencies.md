@@ -9,6 +9,7 @@
 * flask
 * pymongo
 * pytest
+* lorem
 * pyenv (nice for python virtual environment management) [pyenv here](https://realpython.com/intro-to-pyenv/)
 
 ## docker images
