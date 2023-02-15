@@ -1,8 +1,6 @@
 # Data Types
 
 Definitions and descriptions of data types used in API calls and in the database.
-JSON data will be used from the database
-
 
 ## Transaction
 A single banking transaction will contain:
