@@ -1,13 +1,16 @@
 import json
-from src.budget.database import Database
-from src.budget.getBudgetAnalysis import get_budget_analysis
+import subprocess
+from budget.database import Database
+from budget.getBudgetAnalysis import get_budget_analysis
 
 
-def get_month(input: dict, mock=False):
+def get_month(request: dict, mock=False):
     result = {}
     if mock:
-        transaction_file = open("../budget/mockData/mockTransaction.json", "r")
-        budget_file = open("../budget/mockData/mockBudget.json", "r")
+        cmd = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True)
+        repo_root = cmd.stdout.decode("utf-8").strip()
+        transaction_file = open(repo_root + "/server/src/budget/mockData/mockTransaction.json", "r")
+        budget_file = open(repo_root + "/server/src/budget/mockData/mockBudget.json", "r")
 
         transactions = json.loads(transaction_file.read())
         budget = json.loads(budget_file.read())
@@ -17,7 +20,7 @@ def get_month(input: dict, mock=False):
 
     result["transactions"] = transactions
     result["budget"] = budget
-    budget_analysis = get_budget_analysis(transactions, budget, input['month'])
+    budget_analysis = get_budget_analysis(transactions, budget, 1)
     result["budgetAnalysis"] = budget_analysis
 
     return result

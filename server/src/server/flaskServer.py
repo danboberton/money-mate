@@ -1,7 +1,7 @@
 import flask.json
 from flask import Flask, request
-from src.server.serverUtil import config_response
-from src.budget.getMonth import get_month as GetMonth
+from server.serverUtil import config_response
+from budget.getMonth import get_month as GetMonth
 
 app = Flask("budget-app")
 
@@ -20,7 +20,7 @@ def test_api():
     }
 
     response = flask.json.jsonify(test_obj)
-    config_response(response)
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 
@@ -47,8 +47,9 @@ def get_month():
     response = GetMonth(post_data, mock=True)
     response = flask.json.jsonify(response)
     # TODO: Validate JSON?
-    config_response(response)
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 
-app.run()
+def run():
+    app.run()

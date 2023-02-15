@@ -7,7 +7,7 @@ LOGGING=1 #true
 LOG_LOCATION="runlog.log"
 PYTHON_DEPS=('Flask' 'pymongo' 'pytest' 'lorem')
 
-FLASK_SERVER_FILE_NAME="flaskServer.py"
+FLASK_SERVER_FILE_NAME="main.py"
 
 local_log()
 {
@@ -72,7 +72,7 @@ run_dev(){
   print_success "Running Docker compose"
   cd "$REPO_ROOT" && docker compose up &
   print_success "Running flask backend"
-  python3 "$REPO_ROOT"/server/src/server/"$FLASK_SERVER_FILE_NAME" &
+  python3 "$REPO_ROOT"/server/src/"$FLASK_SERVER_FILE_NAME" &
   print_success "Running webpack and browser"
   cd "$REPO_ROOT"/client && npm run dev &
 
