@@ -8,19 +8,25 @@
       "type": "monthlyIncome"
     },
     {
-      "category": "Side Hustle",
-      "amount": 300.00,
-      "type": "runningIncome"
-    },
-    {
       "category": "Groceries",
       "amount": 300.00,
       "type": "monthlyExpense"
     },
     {
-      "category": "Vacation",
+      "category": "Entertainment",
       "amount": 300.00,
-      "type": "runningExpense"
+      "type": "monthlyExpense"
+    },
+    {
+      "category": "Auto",
+      "amount": 300.00,
+      "type": "monthlyExpense"
+    },
+    {
+      "category": "Utilities",
+      "amount": 300.00,
+      "type": "monthlyExpense"
     }
-  ]
+  ],
+  "budgetStartDay": 1
 }
