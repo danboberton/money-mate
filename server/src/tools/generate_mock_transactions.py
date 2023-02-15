@@ -47,7 +47,8 @@ def rnd_description(target: dict):
 
 
 def rnd_month(target: dict):
-    target["month"] = random.randint(1, 12)
+    # target["month"] = random.randint(1, 12)
+    target["month"] = 1
 
 
 # generates an array of size n objects
