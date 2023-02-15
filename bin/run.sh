@@ -116,6 +116,15 @@ run_stop(){
   fi
 }
 
+run_clean(){
+  run_stop
+  clear
+  echo "Cleaning up docker instances"
+  docker rm $(docker ps --all -q -f status=exited)
+  echo "Removing database folder created by mongodb (sudo)"
+  sudo rm -rf "$REPO_ROOT"/database
+}
+
 
 # RUN and parse arguments
 if  [ $# -eq 0 ] || [ $1 == "dev" ]; then
@@ -124,5 +133,7 @@ elif [ $1 == "init" ]; then
   run_init
 elif [ $1 == "stop" ]; then
   run_stop
+elif [ $1 == "clean" ]; then
+  run_clean
 fi
 
