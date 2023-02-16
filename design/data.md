@@ -67,7 +67,7 @@ Note the budgetCategory data type is implemented with a list of bugetCategories.
   "budgetStartDay": 1
 }
 ```
-## BudgetCategory
+## BudgetView
 A single category with a name
 
 | name     | description                                             |

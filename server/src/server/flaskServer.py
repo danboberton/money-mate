@@ -1,5 +1,7 @@
 import flask.json
-from flask import Flask
+from flask import Flask, request
+from server.serverUtil import config_response
+from budget.getMonth import get_month as GetMonth
 
 app = Flask("budget-app")
 
@@ -34,6 +36,20 @@ def mongo_get():
     pass
 
 
+@app.route("/api/getMonth", methods=['POST'])
+def get_month():
+    if request.is_json:
+        # TODO: Validate JSON
+        post_data = request.get_json()
+    else:
+        post_data = None
+
+    response = GetMonth(post_data, mock=True)
+    response = flask.json.jsonify(response)
+    # TODO: Validate JSON?
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
-app.run()
+def run():
+    app.run()

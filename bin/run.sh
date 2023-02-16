@@ -7,7 +7,7 @@ LOGGING=1 #true
 LOG_LOCATION="runlog.log"
 PYTHON_DEPS=('Flask' 'pymongo' 'pytest' 'lorem')
 
-FLASK_SERVER_FILE_NAME="flaskServer.py"
+FLASK_SERVER_FILE_NAME="main.py"
 
 local_log()
 {
@@ -72,7 +72,7 @@ run_dev(){
   print_success "Running Docker compose"
   cd "$REPO_ROOT" && docker compose up &
   print_success "Running flask backend"
-  python3 "$REPO_ROOT"/server/src/server/"$FLASK_SERVER_FILE_NAME" &
+  python3 "$REPO_ROOT"/server/src/"$FLASK_SERVER_FILE_NAME" &
   print_success "Running webpack and browser"
   cd "$REPO_ROOT"/client && npm run dev &
 
@@ -119,6 +119,15 @@ run_stop(){
   fi
 }
 
+run_clean(){
+  run_stop
+  clear
+  echo "Cleaning up docker instances"
+  docker rm $(docker ps --all -q -f status=exited)
+  echo "Removing database folder created by mongodb (sudo)"
+  sudo rm -rf "$REPO_ROOT"/database
+}
+
 
 # RUN and parse arguments
 if  [ $# -eq 0 ] || [ $1 == "dev" ]; then
@@ -127,5 +136,7 @@ elif [ $1 == "init" ]; then
   run_init
 elif [ $1 == "stop" ]; then
   run_stop
+elif [ $1 == "clean" ]; then
+  run_clean
 fi
 
