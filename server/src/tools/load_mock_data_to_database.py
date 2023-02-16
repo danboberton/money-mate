@@ -1,6 +1,6 @@
 import subprocess
 import json
-from src.budget.database import Database
+from budget.database import Database
 
 # This script loads a file containing JSON objects in to the database
 # Because our database is transient, we might need to load in some mock data

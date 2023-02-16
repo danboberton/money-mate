@@ -2,7 +2,7 @@
 ## The run script
 _bin/run.sh_ is supposed to take care of everything.
 
-You can run it from the repo root ( _.../homeapp/_ ) with `sh bin/run.sh` 
+You can run it from the repo root ( _.../money-mate/_ ) with `sh bin/run.sh` 
 Or `./bin/run.sh`
 
 ### Arugments

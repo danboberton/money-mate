@@ -1,4 +1,4 @@
-class BudgetCategory:
+class BudgetView:
 
     def __init__(self, name: str):
         self.name = name
