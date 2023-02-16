@@ -74,7 +74,7 @@ run_dev(){
   print_success "Running flask backend"
   python3 "$REPO_ROOT"/server/src/"$FLASK_SERVER_FILE_NAME" &
   print_success "Running webpack and browser"
-  cd "$REPO_ROOT"/client && npm start &
+  cd "$REPO_ROOT"/client && npm start 
 
 
   # TODO: get pids for kills
@@ -98,8 +98,8 @@ run_init(){
 
 run_stop(){
   print_header "Running Stop"
-  WEBPACK_PID=$(pgrep webpack)
-  if [ "$WEBPACK_PID" != "" ] && [ "$WEBPACK_PID" -gt 0 ]; then
+  WEBPACK_PID="$(lsof -t -i:3000)"
+  if [[ "$WEBPACK_PID" -ne "" ]] && [[ "$WEBPACK_PID" -gt 0 ]]; then
     print_success "Found webpack, pid: $WEBPACK_PID, killing..."
     kill "$WEBPACK_PID"
   else
