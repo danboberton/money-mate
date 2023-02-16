@@ -74,7 +74,7 @@ run_dev(){
   print_success "Running flask backend"
   python3 "$REPO_ROOT"/server/src/"$FLASK_SERVER_FILE_NAME" &
   print_success "Running webpack and browser"
-  cd "$REPO_ROOT"/client && npm run dev &
+  cd "$REPO_ROOT"/client && npm start &
 
 
   # TODO: get pids for kills
