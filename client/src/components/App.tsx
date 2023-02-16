@@ -1,23 +1,10 @@
-import React from 'react';
-import '../static/styles/App.css';
-
+import React from "react";
+import { Grommet, grommet, Heading } from "grommet";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grommet className="App" theme={grommet}>
+      <Heading level='1'>TypeScript Rocks</Heading>
+    </Grommet>
   );
 }
 
