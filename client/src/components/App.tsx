@@ -1,12 +1,12 @@
-import './App.css';
-import Card from "./components/Card";
+import React from 'react';
+import '../static/styles/App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -17,7 +17,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <Card/>  {/*New Component*/}
     </div>
   );
 }
