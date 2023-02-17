@@ -6,7 +6,7 @@ import {GetMonthResponse_t} from "./budget/GetMonthResponse";
 import {fetchPOST} from "../api/request";
 
 export default function BudgetView(){
-    const [monthData, setMonthData] = useState(null)
+    const [monthData, setMonthData] = useState<GetMonthResponse_t | undefined>(undefined)
 
     const monthRequest: RequestInit = {
         method: 'POST',
@@ -18,9 +18,10 @@ export default function BudgetView(){
         }
     }
 
+
     useEffect(()=>{
         // @ts-ignore
-        fetchPOST<GetMonthResponse_t>('127.0.0.1:5000', monthRequest)
+        fetchPOST<GetMonthResponse_t>('http://127.0.0.1:5000/api/getMonth', monthRequest)
             .then( (data) => setMonthData(data))
     }, [])
 
