@@ -2,28 +2,24 @@ import {useEffect, useState} from "react";
 import BudgetSettings from "./budget/BudgetSettings";
 import BudgetAnalysis from "./budget/BudgetAnalysis";
 import TransactionTable from "./budget/TransactionTable";
-import {GetMonthRequest_t, GetMonthResponse_t} from "./budget/GetMonthResponse";
+import {GetMonthResponse_t} from "./budget/GetMonthResponse";
 import {fetchPOST} from "../api/request";
 
 export default function BudgetView(){
     const [monthData, setMonthData] = useState(null)
 
-    // @ts-ignore
     const monthRequest: RequestInit = {
         method: 'POST',
         mode: 'cors',
-        body: {
-            request: "getMonth",
-            month: 1,
-            year: 2023
-        },
-        Headers: {
-            Accept: 'application.json',
+        body: "{'request': 'getMonth', 'month': '1','year': '2023'}",
+        headers: {
+            'Accept': 'application.json',
             'Content-Type': 'application/json'
         }
     }
 
     useEffect(()=>{
+        // @ts-ignore
         fetchPOST<GetMonthResponse_t>('127.0.0.1:5000', monthRequest)
             .then( (data) => setMonthData(data))
     }, [])
