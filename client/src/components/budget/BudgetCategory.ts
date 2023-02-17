@@ -3,7 +3,7 @@ enum BudgetType{
     monthlyExpense
 }
 
-export class BudgetCategory{
+export class BudgetCategory_t {
 
     category: string;
     amount: number;

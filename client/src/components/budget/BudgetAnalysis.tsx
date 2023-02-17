@@ -1,6 +1,6 @@
 import {BudgetOutcome} from "./BudgetOutcome";
 
-export class BudgetAnalysis{
+export class BudgetAnalysis_t{
     month: number;
     totalIncome: number;
     totalExpense: number
@@ -15,4 +15,8 @@ export class BudgetAnalysis{
         this.totalUncategorized = totalUncategorized;
         this.budgetOutcomes = budgetOutcomes;
     }
+}
+
+export default function BudgetAnalysis(){
+    return(<h2>Budget Analysis</h2>)
 }

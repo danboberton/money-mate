@@ -1,4 +1,4 @@
-export class Transaction{
+export class Transaction_t {
     public txID: string;
     public cost: number;
     public date: Date;
@@ -14,4 +14,9 @@ export class Transaction{
         this.budgetClassification = budgetClassification;
         this.month = month;
     }
+}
+
+export default function Transaction(){
+
+    return null
 }
