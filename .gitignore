@@ -4,6 +4,9 @@ runlog.log
 # Where all the local mongo container data lives
 database/
 
+# Temp directory for temp stuff
+tmp/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

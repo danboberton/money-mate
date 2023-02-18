@@ -13,7 +13,6 @@ export default function BudgetView(){
         mode: 'cors',
         body: "{'request': 'getMonth', 'month': '1','year': '2023'}",
         headers: {
-            'Accept': 'application.json',
             'Content-Type': 'application/json'
         }
     }
