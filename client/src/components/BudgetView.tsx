@@ -8,10 +8,11 @@ import {fetchPOST} from "../api/request";
 export default function BudgetView(){
     const [monthData, setMonthData] = useState<GetMonthResponse_t | undefined>(undefined)
 
+    const body = { request: "getMonth", month: 1, year: 2023}
     const monthRequest: RequestInit = {
         method: 'POST',
         mode: 'cors',
-        body: "{'request': 'getMonth', 'month': '1','year': '2023'}",
+        body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json'
         }

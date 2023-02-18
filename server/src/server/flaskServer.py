@@ -6,6 +6,7 @@ from budget.getMonth import get_month as GetMonth
 app = Flask(__name__)
 CORS(app)
 
+
 @app.before_request
 def log_request_info():
     app.logger.debug('Request Headers: %s', request.headers)
@@ -57,10 +58,8 @@ def get_month():
         post_data = None
 
     response = flask.json.jsonify(GetMonth(post_data, mock=True))
-    # TODO: Validate JSON?
-    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 
 def run():
-    app.run(debug=True)
+    app.run(debug=False)
