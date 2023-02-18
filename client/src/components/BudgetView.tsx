@@ -20,7 +20,6 @@ export default function BudgetView(){
 
 
     useEffect(()=>{
-        // @ts-ignore
         fetchPOST<GetMonthResponse_t>('http://127.0.0.1:5000/api/getMonth', monthRequest)
             .then( (data) => setMonthData(data))
     }, [])
