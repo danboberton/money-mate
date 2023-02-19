@@ -5,7 +5,7 @@ MONGO_IMAGE="mongo:latest"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 LOGGING=1 #true
 LOG_LOCATION="runlog.log"
-PYTHON_DEPS=('Flask' 'pymongo' 'pytest' 'lorem')
+PYTHON_DEPS=('Flask' 'pymongo' 'pytest' 'lorem' 'flask_cors')
 
 FLASK_SERVER_FILE_NAME="main.py"
 
