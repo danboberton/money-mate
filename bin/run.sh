@@ -81,6 +81,92 @@ run_dev(){
 
 }
 
+run_test_playwright(){
+  #Start Development Env
+  print_header "Running Dev"
+  print_success "Running Docker compose"
+  cd "$REPO_ROOT" && docker compose up -d
+  docker_pid=$!
+
+  wait $docker_pid
+
+  print_success "Running flask backend"
+  python3 "$REPO_ROOT"/server/src/"$FLASK_SERVER_FILE_NAME" &
+  flask_pid=$!
+
+  print_success "Running webpack and browser"
+  cd "$REPO_ROOT"/client && npm start &
+
+  #Wait for Docker and Webpack/flask to come up
+  while ! curl -s http://localhost:3000 >/dev/null; do
+    sleep 1
+  done  
+
+  #Run Tests
+  print_success "Running Playwright tests"
+  cd "$REPO_ROOT"/client && npx playwright test &
+  playwright_pid=$!
+
+  #Wait until testing finishes
+  wait $playwright_pid
+
+  #Stop Development Env
+  print_header "Stopping Dev"
+  print_header "Stopping Webpack and Server"
+  pids=$(lsof -i :3000 | awk '{if(NR>1)print $2}')
+
+  if [ -n "$pids" ]; then
+      kill $pids
+  else
+      echo "No processes found running on port 3000"
+  fi
+
+  #Stop Docker container
+  print_success "Stopping docker..."
+  cd "$REPO_ROOT" && docker compose down &
+  docker_close_pid=$!
+
+  #Wait for Docker container to close
+  wait $docker_close_pid
+
+  print_success "Opening Test Report..."
+  cd "$REPO_ROOT"/client && npx playwright show-report
+}
+
+run_stop_mac(){
+  print_header "Stopping Dev"
+  print_success "Stopping webpack..."
+  pids=$(lsof -i :3000 | awk '{if(NR>1)print $2}')
+
+  if [ -n "$pids" ]; then
+    print_success "Found webpack, pid: $pids, killing..."
+    kill $pids
+  else
+    print_error "Webpack pid not found, maybe it wasn't running?"
+  fi
+
+  print_success "Stopping docker..."
+  cd "$REPO_ROOT" && docker compose down
+
+  print_success "Stopping backend..."
+  FLASK_PID=$(pgrep -f "$FLASK_SERVER_FILE_NAME")
+  if [ "$FLASK_PID" != "" ] && [ "$FLASK_PID" -gt 0 ]; then
+    print_success "Found flask server, pid: $FLASK_PID, killing..."
+    kill "$FLASK_PID"
+  else
+    print_error "Flask pid not found, maybe it wasn't running?"
+  fi
+
+  print_success "Stopping playwright report..."
+  report_pid=$(lsof -i :9323 | awk '{if(NR>1)print $2}')
+  if [ -n "$report_pid" ]; then
+    print_success "Found playwright, pid: $report_pid, killing..."
+    kill $report_pid
+  else
+    print_error "Playwright report pid not found, maybe it wasn't running?"
+  fi
+}
+ 
 run_init(){
   print_header "Running Init"
   print_log "Running npm install."
@@ -136,7 +222,11 @@ elif [ $1 == "init" ]; then
   run_init
 elif [ $1 == "stop" ]; then
   run_stop
+elif [ $1 == "stop-mac" ]; then
+  run_stop_mac
 elif [ $1 == "clean" ]; then
   run_clean
+elif [ $1 == "test" ]; then
+  run_test_playwright
 fi
 
