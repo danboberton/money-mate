@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import BudgetSettings from "./budget/BudgetSettings";
 import BudgetAnalysis from "./budget/BudgetAnalysis";
 import TransactionTable from "./budget/TransactionTable";
 import {GetMonthResponse_t} from "./budget/GetMonthResponse";
 import {fetchPOST} from "../api/request";
+import UserBudget from "./budget/UserBudget";
 
 export default function BudgetView(){
     const [monthData, setMonthData] = useState<GetMonthResponse_t | undefined>(undefined)
@@ -29,8 +29,7 @@ export default function BudgetView(){
             <h1>Budget View</h1>
             <p>This is a dump of the getMonth API call, this data should get broken up and sent to the 3 components below</p>
             <p>The data doesn't come from the database itself (yet), but is loaded from server/src/budget/mockData</p>
-            <p>{JSON.stringify(monthData)}</p>
-            <BudgetSettings/>
+            <UserBudget budget={monthData?.budget}/>
             <BudgetAnalysis/>
             <TransactionTable/>
         </div>

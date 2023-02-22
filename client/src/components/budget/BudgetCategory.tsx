@@ -16,3 +16,12 @@ export class BudgetCategory_t {
         this.type = type;
     }
 }
+
+export default function BudgetCategory(props : {category: BudgetCategory_t}){
+
+    return(
+        <div>
+            
+        </div>
+    )
+}
