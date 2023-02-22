@@ -133,7 +133,7 @@ run_test_playwright(){
   cd "$REPO_ROOT"/client && npx playwright show-report
 }
 
-run_stop_mac(){
+run_stop_playwright(){
   print_header "Stopping Dev"
   print_success "Stopping webpack..."
   pids=$(lsof -i :3000 | awk '{if(NR>1)print $2}')
@@ -222,8 +222,8 @@ elif [ $1 == "init" ]; then
   run_init
 elif [ $1 == "stop" ]; then
   run_stop
-elif [ $1 == "stop-mac" ]; then
-  run_stop_mac
+elif [ $1 == "stop-playwright" ]; then
+  run_stop_playwright
 elif [ $1 == "clean" ]; then
   run_clean
 elif [ $1 == "test" ]; then
