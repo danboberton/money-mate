@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grommet, grommet, Heading } from "grommet";
 import BudgetView from "./BudgetView";
+import { DashHeader } from "./dashboard/DashHeader";
+
+import '../static/styles/components/dashboard/DashHeader.scss';
+import { Dashboard } from "./dashboard/Dashboard";
+import { defaultState } from "../utils/constants";
 
 function App() {
+  const [appState, setAppState] = useState(defaultState)
   return (
     <Grommet className="App" theme={grommet}>
-      <Heading level='1'>TypeScript Rocks</Heading>
-        <BudgetView/>
+      <Dashboard state={appState} setState={setAppState}/>
     </Grommet>
   );
 }
