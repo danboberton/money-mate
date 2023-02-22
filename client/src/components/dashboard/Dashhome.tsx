@@ -11,11 +11,12 @@ export function Dashhome({state, setState}: DashhomeProps){
     return (
         <Box>
             Welcome to Money mate
+            <Box height='small' width='small'>
             <Button
               label="Budget"
               onClick={() => setAppView(state, setState, "budget")}
-
             />
+            </Box>
         </Box>
     );
 }

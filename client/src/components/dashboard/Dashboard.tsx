@@ -11,9 +11,9 @@ interface DashboardProps{
 
 export function Dashboard({state, setState}: DashboardProps) {
     return(
-    <Box>
+      <Box>
         <DashHeader state={state} setState={setState}/>
         <ModuleViewController state={state} setState={setState}/>
-    </Box>
+      </Box>
     );
 }
