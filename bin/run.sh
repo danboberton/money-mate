@@ -81,7 +81,7 @@ run_dev(){
 
 }
 
-run_test_playwright(){
+run_dev_playwright(){
   #Start Development Env
   print_header "Running Dev"
   print_success "Running Docker compose"
@@ -96,6 +96,26 @@ run_test_playwright(){
 
   print_success "Running webpack and browser"
   cd "$REPO_ROOT"/client && npm start &
+}
+
+run_playwright_test_generator(){
+  run_dev_playwright
+
+  while ! curl -s http://localhost:3000 >/dev/null; do
+    sleep 1
+  done  
+
+  cd "$REPO_ROOT"/client && npx playwright codegen demo.playwright.dev/todomvc
+  codegen_pid=$!
+
+  wait $codegen_pid
+
+  run_stop_playwright
+}
+
+run_test_playwright(){
+  #Start Development Env
+  run_dev_playwright
 
   #Wait for Docker and Webpack/flask to come up
   while ! curl -s http://localhost:3000 >/dev/null; do
@@ -228,5 +248,7 @@ elif [ $1 == "clean" ]; then
   run_clean
 elif [ $1 == "test" ]; then
   run_test_playwright
+elif [ $1 == "test-generator" ]; then
+  run_playwright_test_generator
 fi
 
