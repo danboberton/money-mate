@@ -1,4 +1,6 @@
 import {BudgetOutcome} from "./BudgetOutcome";
+import {Budget_t} from "./Budget";
+import {Button, Card, CardBody, CardFooter, CardHeader, Page, PageContent, Paragraph} from "grommet";
 
 export class BudgetAnalysis_t{
     month: number;
@@ -17,6 +19,23 @@ export class BudgetAnalysis_t{
     }
 }
 
-export default function BudgetAnalysis(){
-    return(<h2>Budget Analysis</h2>)
+export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
+
+    const budgetOutcomes = () => {
+
+        return(
+            <>
+                Month: {props.analysis.month}<br/>
+                Total Income: {props.analysis.totalIncome}<br/>
+                Total Income: {props.analysis.totalExpense}<br/>
+                Total Uncategorized: {props.analysis.totalUncategorized}<br/>
+            </>
+        )
+    }
+    return(
+        <Card  height="small" width="small" background="light-1">
+            <CardHeader pad="medium"></CardHeader>
+            <CardBody pad="medium">{budgetOutcomes()}</CardBody>
+        </Card>
+        )
 }
