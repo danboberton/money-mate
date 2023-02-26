@@ -25,6 +25,9 @@ def get_budget_analysis(tx: dict, budget: dict, month: int):
         category_outcome["outcome"] = category_total
         budget_outcomes.append(category_outcome)
 
+    result["totalIncome"] = total_income
+    result["totalExpense"] = total_expense
+    result["totalUncategorized"] = total_uncategorized
     result["budgetOutcomes"] = budget_outcomes
     result["month"] = month
 
