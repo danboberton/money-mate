@@ -25,11 +25,11 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
 
         return(
             <>
-                <p>{JSON.stringify(props.analysis)}</p>
                 Month: {props.analysis.month}<br/>
-                Total Income: {props.analysis.totalIncome}<br/>
-                Total Income: {props.analysis.totalExpense}<br/>
-                Total Uncategorized: {props.analysis.totalUncategorized}<br/>
+                Total Income: ${props.analysis.totalIncome}<br/>
+                Total Spent: ${props.analysis.totalExpense}<br/>
+                Total Uncategorized: ${props.analysis.totalUncategorized}<br/>
+                <p>TODO: display individual budget categories</p>
             </>
         )
     }
