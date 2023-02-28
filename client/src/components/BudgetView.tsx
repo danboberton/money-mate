@@ -28,6 +28,7 @@ export default function BudgetView(){
         if(monthData){
             return(
                 <>
+                    <p>{JSON.stringify(monthData)}</p>
                     <BudgetSettings budget={monthData.budget}/>
                     <BudgetAnalysis analysis={monthData.budgetAnalysis}/>
                 </>

@@ -9,7 +9,7 @@ def get_month_fixture():
 
 
 def test_budget_analysis(get_month_fixture):
-    month = get_month
+    month = get_month_fixture
     transactions = month['transactions']
     assert len(transactions) > 0
     assert month['budget'] is not None

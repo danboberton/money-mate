@@ -1,0 +1,461 @@
+{
+  "budget": {
+    "budgetCategories": [
+      {
+        "amount": 300.0,
+        "category": "Regular Salary",
+        "type": "monthlyIncome"
+      },
+      {
+        "amount": 300.0,
+        "category": "Groceries",
+        "type": "monthlyExpense"
+      },
+      {
+        "amount": 300.0,
+        "category": "Entertainment",
+        "type": "monthlyExpense"
+      },
+      {
+        "amount": 300.0,
+        "category": "Auto",
+        "type": "monthlyExpense"
+      },
+      {
+        "amount": 300.0,
+        "category": "Utilities",
+        "type": "monthlyExpense"
+      }
+    ],
+    "budgetID": "007",
+    "budgetName": "Mock Budget",
+    "budgetStartDay": 1
+  },
+  "budgetAnalysis": {
+    "budgetOutcomes": [
+      {
+        "category": "Regular Salary",
+        "outcome": 52360.340000000004
+      },
+      {
+        "category": "Groceries",
+        "outcome": 24109.869999999995
+      },
+      {
+        "category": "Entertainment",
+        "outcome": -120069.19000000002
+      },
+      {
+        "category": "Auto",
+        "outcome": 0
+      },
+      {
+        "category": "Utilities",
+        "outcome": 0
+      }
+    ],
+    "month": 1
+  },
+  "transactions": [
+    {
+      "budgetClassifications": null,
+      "cost": -70814.02,
+      "date": "2010-05-12 14:12:25",
+      "description": "Eius dolor tempora consectetur sed.",
+      "month": 1,
+      "txID": 85822413
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 42965.91,
+      "date": "2015-05-12 02:36:10",
+      "description": "Adipisci amet dolorem eius.",
+      "month": 1,
+      "txID": 99410742
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 57816.97,
+      "date": "2007-10-08 17:09:18",
+      "description": "Modi eius neque quaerat est velit adipisci ut.",
+      "month": 1,
+      "txID": 67827639
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 83014.58,
+      "date": "2010-06-16 21:52:22",
+      "description": "Dolorem ut ipsum consectetur amet.",
+      "month": 1,
+      "txID": 21429111
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -74645.36,
+      "date": "2012-09-15 04:18:24",
+      "description": "Est velit aliquam tempora neque porro consectetur magnam.",
+      "month": 1,
+      "txID": 50992980
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 44715.71,
+      "date": "2022-05-24 02:38:23",
+      "description": "Labore quaerat dolorem sit amet aliquam sed eius.",
+      "month": 1,
+      "txID": 10576384
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -79082.85,
+      "date": "2004-06-09 20:22:00",
+      "description": "Est neque quisquam voluptatem labore dolore labore.",
+      "month": 1,
+      "txID": 38840995
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -45077.66,
+      "date": "2023-01-20 03:35:58",
+      "description": "Quiquia quisquam dolore porro.",
+      "month": 1,
+      "txID": 47683627
+    },
+    {
+      "budgetClassifications": "Groceries",
+      "cost": -35823.16,
+      "date": "2013-11-30 08:30:41",
+      "description": "Quisquam sit porro eius sed ipsum.",
+      "month": 1,
+      "txID": 97861743
+    },
+    {
+      "budgetClassifications": "Groceries",
+      "cost": -39955.81,
+      "date": "2011-09-26 23:03:15",
+      "description": "Est amet dolorem quaerat sit ipsum dolorem.",
+      "month": 1,
+      "txID": 7507865
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 30871.61,
+      "date": "2022-11-16 17:33:20",
+      "description": "Dolor est dolor eius tempora porro porro.",
+      "month": 1,
+      "txID": 87971489
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 95826.42,
+      "date": "2020-11-09 12:59:28",
+      "description": "Labore eius dolor numquam non amet ut.",
+      "month": 1,
+      "txID": 35264582
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -71255.15,
+      "date": "2006-06-12 20:00:20",
+      "description": "Quiquia amet magnam magnam quiquia neque numquam.",
+      "month": 1,
+      "txID": 6323853
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 45025.15,
+      "date": "2001-05-24 07:51:52",
+      "description": "Sed porro ut est.",
+      "month": 1,
+      "txID": 33744232
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -10824.11,
+      "date": "2015-10-18 17:18:18",
+      "description": "Neque adipisci tempora tempora est.",
+      "month": 1,
+      "txID": 86028437
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 99744.82,
+      "date": "2004-08-16 01:46:51",
+      "description": "Voluptatem quisquam numquam quiquia dolorem dolor.",
+      "month": 1,
+      "txID": 67187531
+    },
+    {
+      "budgetClassifications": "Groceries",
+      "cost": 99888.84,
+      "date": "2019-01-18 15:39:39",
+      "description": "Quiquia ipsum non adipisci.",
+      "month": 1,
+      "txID": 50185868
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -4845.87,
+      "date": "2011-06-20 07:10:43",
+      "description": "Aliquam eius quaerat amet amet.",
+      "month": 1,
+      "txID": 15014632
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 27400.19,
+      "date": "2019-02-16 21:19:09",
+      "description": "Dolor sed non porro dolore.",
+      "month": 1,
+      "txID": 98234975
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 38327.14,
+      "date": "2015-05-27 05:19:23",
+      "description": "Porro ut tempora sit dolorem.",
+      "month": 1,
+      "txID": 35575299
+    },
+    {
+      "budgetClassifications": "Entertainment",
+      "cost": -18284.4,
+      "date": "2013-09-16 08:31:12",
+      "description": "Numquam neque consectetur eius eius amet ipsum.",
+      "month": 1,
+      "txID": 95690392
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 54222.45,
+      "date": "2021-01-09 12:37:04",
+      "description": "Adipisci amet sit quisquam aliquam.",
+      "month": 1,
+      "txID": 2823171
+    },
+    {
+      "budgetClassifications": "Invalid Classification",
+      "cost": -82330.9,
+      "date": "2012-03-31 01:39:15",
+      "description": "Numquam eius est sed.",
+      "month": 1,
+      "txID": 30728047
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -43838.53,
+      "date": "2020-06-07 07:45:14",
+      "description": "Non eius velit non velit modi dolorem consectetur.",
+      "month": 1,
+      "txID": 65151232
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 72749.57,
+      "date": "2015-06-01 16:45:44",
+      "description": "Neque tempora aliquam sed quisquam quisquam consectetur.",
+      "month": 1,
+      "txID": 13009834
+    },
+    {
+      "budgetClassifications": "Invalid Classification",
+      "cost": 5545.28,
+      "date": "2004-09-20 14:16:29",
+      "description": "Dolorem dolorem porro neque dolor.",
+      "month": 1,
+      "txID": 8135296
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -51898.28,
+      "date": "2009-07-03 03:11:31",
+      "description": "Neque velit porro consectetur.",
+      "month": 1,
+      "txID": 56623996
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 70956.01,
+      "date": "2001-07-04 01:13:02",
+      "description": "Ut eius dolore modi.",
+      "month": 1,
+      "txID": 6789851
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 26186.79,
+      "date": "2014-08-25 14:26:29",
+      "description": "Dolore magnam adipisci magnam.",
+      "month": 1,
+      "txID": 65181649
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 19278.72,
+      "date": "2019-11-30 11:52:33",
+      "description": "Dolor dolorem etincidunt dolorem aliquam quaerat tempora.",
+      "month": 1,
+      "txID": 35594952
+    },
+    {
+      "budgetClassifications": "Entertainment",
+      "cost": -84019.74,
+      "date": "2002-12-13 01:43:26",
+      "description": "Quaerat non numquam numquam.",
+      "month": 1,
+      "txID": 72772209
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -85088.95,
+      "date": "2003-09-24 05:41:28",
+      "description": "Amet quiquia amet sed eius.",
+      "month": 1,
+      "txID": 21130264
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -68571.93,
+      "date": "2020-05-21 07:49:38",
+      "description": "Quaerat quiquia aliquam quiquia amet.",
+      "month": 1,
+      "txID": 54193838
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 72327.42,
+      "date": "2018-10-16 13:32:09",
+      "description": "Est dolorem sed sit ipsum eius.",
+      "month": 1,
+      "txID": 56267416
+    },
+    {
+      "budgetClassifications": "Entertainment",
+      "cost": 3753.87,
+      "date": "2022-12-19 15:37:34",
+      "description": "Neque ipsum ut amet adipisci neque.",
+      "month": 1,
+      "txID": 35650177
+    },
+    {
+      "budgetClassifications": "Regular Salary",
+      "cost": 47586.01,
+      "date": "2003-07-01 02:22:36",
+      "description": "Dolorem numquam est dolor labore amet eius labore.",
+      "month": 1,
+      "txID": 83370584
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -58646.43,
+      "date": "2019-06-27 12:35:03",
+      "description": "Quiquia velit quisquam numquam adipisci sed.",
+      "month": 1,
+      "txID": 38250361
+    },
+    {
+      "budgetClassifications": "Entertainment",
+      "cost": -21518.92,
+      "date": "2004-07-11 23:23:38",
+      "description": "Est consectetur consectetur tempora porro.",
+      "month": 1,
+      "txID": 74437459
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -28604.28,
+      "date": "2008-03-03 06:15:27",
+      "description": "Dolorem sed quisquam est numquam non.",
+      "month": 1,
+      "txID": 20863866
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -86682.09,
+      "date": "2015-06-01 15:54:40",
+      "description": "Aliquam adipisci ipsum ut dolor quisquam.",
+      "month": 1,
+      "txID": 33704924
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -57641.73,
+      "date": "2019-10-10 16:36:42",
+      "description": "Porro adipisci consectetur amet sit dolor porro.",
+      "month": 1,
+      "txID": 35159041
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -3211.58,
+      "date": "2006-01-16 02:12:33",
+      "description": "Dolor aliquam etincidunt labore velit aliquam labore.",
+      "month": 1,
+      "txID": 4835615
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 78800.75,
+      "date": "2004-07-02 02:54:28",
+      "description": "Ut porro modi quiquia tempora dolor.",
+      "month": 1,
+      "txID": 28195996
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -57400.97,
+      "date": "2007-01-10 23:26:32",
+      "description": "Adipisci dolore tempora ipsum velit modi velit.",
+      "month": 1,
+      "txID": 31774347
+    },
+    {
+      "budgetClassifications": null,
+      "cost": 92691.2,
+      "date": "2010-01-30 09:25:10",
+      "description": "Velit sit consectetur magnam aliquam.",
+      "month": 1,
+      "txID": 89913413
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -41689.2,
+      "date": "2016-08-31 02:18:17",
+      "description": "Etincidunt voluptatem velit eius eius adipisci.",
+      "month": 1,
+      "txID": 63174946
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -49371.39,
+      "date": "2010-06-26 00:06:54",
+      "description": "Ut est labore quisquam.",
+      "month": 1,
+      "txID": 88588155
+    },
+    {
+      "budgetClassifications": "Regular Salary",
+      "cost": 4774.33,
+      "date": "2019-04-01 12:05:17",
+      "description": "Adipisci consectetur est dolore quaerat est.",
+      "month": 1,
+      "txID": 68371273
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -71581.59,
+      "date": "2012-10-06 16:42:45",
+      "description": "Modi quiquia numquam consectetur magnam quaerat.",
+      "month": 1,
+      "txID": 5134795
+    },
+    {
+      "budgetClassifications": null,
+      "cost": -33225.04,
+      "date": "2015-11-03 18:44:17",
+      "description": "Numquam velit porro sed.",
+      "month": 1,
+      "txID": 25511942
+    }
+  ]
+}

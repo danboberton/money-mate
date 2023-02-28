@@ -25,6 +25,7 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
 
         return(
             <>
+                <p>{JSON.stringify(props.analysis)}</p>
                 Month: {props.analysis.month}<br/>
                 Total Income: {props.analysis.totalIncome}<br/>
                 Total Income: {props.analysis.totalExpense}<br/>
@@ -33,7 +34,7 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
         )
     }
     return(
-        <Card  height="small" width="small" background="light-1">
+        <Card  height="large" width="large" background="light-1">
             <CardHeader pad="medium"></CardHeader>
             <CardBody pad="medium">{budgetOutcomes()}</CardBody>
         </Card>
