@@ -57,8 +57,9 @@ def get_month():
     else:
         post_data = None
 
-    response = flask.json.jsonify(GetMonth(post_data, mock=True))
-    return response
+    response = GetMonth(post_data, mock=True)
+    json_response = flask.json.jsonify(response)
+    return json_response
 
 
 def run():
