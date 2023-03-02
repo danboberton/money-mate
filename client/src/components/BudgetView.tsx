@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import BudgetSettings from "./budget/BudgetSettings";
+import BudgetInfo from "./budget/BudgetInfo";
 import BudgetAnalysis from "./budget/BudgetAnalysis";
 import TransactionTable from "./budget/TransactionTable";
 import {GetMonthResponse_t} from "./budget/GetMonthResponse";
@@ -28,7 +28,7 @@ export default function BudgetView(){
         if(monthData){
             return(
                 <>
-                    <BudgetSettings budget={monthData.budget}/>
+                    <BudgetInfo budget={monthData.budget}/>
                     <BudgetAnalysis analysis={monthData.budgetAnalysis}/>
                 </>
             )

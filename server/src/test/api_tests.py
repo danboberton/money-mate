@@ -3,6 +3,7 @@ import mock
 from server.flaskServer import get_month
 
 
+@pytest.mark.pr
 def test_get_month():
     m_request = mock.MagicMock()
     m_request.is_json = True
@@ -19,13 +20,19 @@ def test_get_month():
 
     m_json = mock.MagicMock()
 
-    def mock_jsonify(input):
-        return input
-
+    # The mocked jsonify function, just returns
+    def mock_jsonify(input_dict): return input_dict
     m_json.jsonify = mock_jsonify
 
     with mock.patch("server.flaskServer.request", m_request):
         with mock.patch("server.flaskServer.flask.json", m_json):
             result = get_month()
 
-    print(result)
+    # Check for all data structures being returned correctly
+    assert "transactions" in result
+    assert len(result["transactions"]) > 0
+    assert "budget" in result
+    assert "budgetAnalysis" in result
+
+    # TODO check sub structures
+
