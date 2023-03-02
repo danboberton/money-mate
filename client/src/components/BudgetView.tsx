@@ -40,8 +40,6 @@ export default function BudgetView(){
     return(
         <>
         <h1>Budget View</h1>
-        <p>This is a dump of the getMonth API call, this data should get broken up and sent to the 3 components below</p>
-        <p>The data doesn't come from the database itself (yet), but is loaded from server/src/budget/mockData</p>
         { data() }
         </>
     )

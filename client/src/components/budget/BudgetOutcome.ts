@@ -1,4 +1,4 @@
-export class BudgetOutcome{
+export class BudgetOutcome_t {
     category: string;
     outcome: number;
 

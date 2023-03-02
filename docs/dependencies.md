@@ -12,6 +12,7 @@
 * lorem
 * pyenv (nice for python virtual environment management) [pyenv here](https://realpython.com/intro-to-pyenv/)
 * flask_cors
+* mock
 
 ## docker images
 * mongo:latest
