@@ -3,7 +3,11 @@ import subprocess
 from budget.database import Database
 from budget.getBudgetAnalysis import get_budget_analysis
 
-
+def test_method_called_from_route(self):
+        m = mock.MagicMock()
+        m.values = "MyData"
+        with mock.patch("somefile.request", m):
+            somefile.method_called_from_route()
 def get_month(request: dict, mock=False):
     result = {}
     if mock:

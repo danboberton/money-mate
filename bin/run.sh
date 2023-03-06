@@ -5,7 +5,7 @@ MONGO_IMAGE="mongo:latest"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 LOGGING=1 #true
 LOG_LOCATION="runlog.log"
-PYTHON_DEPS=('Flask' 'pymongo' 'pytest' 'lorem' 'flask_cors')
+PYTHON_DEPS=('Flask' 'pymongo' 'pytest' 'lorem' 'flask_cors' 'mock')
 
 FLASK_SERVER_FILE_NAME="main.py"
 
@@ -62,7 +62,7 @@ install_python_deps()
   for d in "${PYTHON_DEPS[@]}"; do
     # TODO: Check for plugin before blindly installing?
     print_log "Installing $d"
-    pip install "$d"
+    pip3 install "$d"
 done
 }
 
@@ -193,7 +193,7 @@ run_init(){
   cd "$REPO_ROOT"/client && npm install
   check_for_command "docker"
   acquire_current_mongo
-  check_for_command "pip"
+  check_for_command "pip3"
   check_for_command "python3"
   check_for_command "npm"
   check_for_command "docker"
