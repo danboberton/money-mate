@@ -61,11 +61,11 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
                     <TableHeader>
                         <TableRow>
                             <TableCell scope={"col"} border={"bottom"}>
-                            Category
-                        </TableCell>
-                        <TableCell scope={"col"} border={"bottom"}>
-                            Outcome
-                        </TableCell>
+                                Category
+                            </TableCell>
+                            <TableCell scope={"col"} border={"bottom"}>
+                                Outcome
+                            </TableCell>
                         </TableRow>
                     </TableHeader>
                     {mapCategories(props.analysis.budgetOutcomes)}
