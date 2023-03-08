@@ -22,13 +22,21 @@ export class Transactions_t {
 }
 
 export default function TransactionTable(props: {transactionData: Array<Transaction_t>}){
-    console.log(props.transactionData[0])
+    console.log(props.transactionData)
+    var count = 0
+    
     const transactionOutput = (transact: Transaction_t) => {
+        count++
+        console.log(count)
+        const [date, time] = transact.date.split(' ');
+        const formattedDate = new Date(date).toLocaleDateString();
+        const formattedTime = new Date(`${date}T${time}`).toLocaleTimeString([], {hour12: true, hour: 'numeric', minute: '2-digit'});
         return (
             <TableRow>
-                <TableCell>{transact.date}</TableCell>
+                <TableCell>{formattedDate}</TableCell>
+                <TableCell>{formattedTime}</TableCell>
                 <TableCell>{transact.cost}</TableCell>
-                <TableCell>{transact.description}</TableCell>
+                <TableCell>{transact.budgetClassifications}</TableCell>
             </TableRow>
         )
     }
@@ -50,10 +58,13 @@ export default function TransactionTable(props: {transactionData: Array<Transact
                             Date
                         </TableCell>
                         <TableCell scope={"col"} border={"bottom"}>
+                            Time
+                        </TableCell>
+                        <TableCell scope={"col"} border={"bottom"}>
                             Amount
                         </TableCell>
                         <TableCell scope={"col"} border={"bottom"}>
-                            Description
+                            Category
                         </TableCell>
                     </TableRow>
                 </TableHeader>
@@ -69,9 +80,8 @@ export default function TransactionTable(props: {transactionData: Array<Transact
                     <h2>Transactions</h2>
                 </PageContent>
             </Page>
-            <Card  height="large" width="large" background="light-1">
-                <CardHeader pad="medium"></CardHeader>
-                <CardBody pad="medium">{transactionsTable()}</CardBody>
+            <Card  min-height="large" width="large" background="light-1">
+                <CardBody overflow="auto" min-height="300px" pad="medium">{transactionsTable()}</CardBody>
             </Card>
         </>   
     )
