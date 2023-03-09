@@ -43,15 +43,18 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
         )
     }
 
+    // TODO: This is CRAZY inefficient, maybe the data structures should be redesigned
+    const getCapacityByBudgetName = (name: string, budget: Budget_t) => {
+
+    }
     const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
-        for (outcome of outcomes){
-            
-        }
-        return()
-        outcomes.map((outcome) => {
-            let capacity: number =
-                budgetCategory(outcome, capacity))
-        }
+
+        return(
+            outcomes.map((outcome) => {
+                let capacity: number = budget.budgetCategories[outcome.category].amount;
+                    budgetCategory(outcome, capacity))
+            }
+        )
     }
 
     const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
