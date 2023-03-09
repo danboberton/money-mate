@@ -29,7 +29,7 @@ export default function BudgetView(){
             return(
                 <>
                     <BudgetInfo budget={monthData.budget}/>
-                    <BudgetAnalysis analysis={monthData.budgetAnalysis}/>
+                    <BudgetAnalysis analysis={monthData.budgetAnalysis} budget={monthData.budget}/>
                     <TransactionTable transactionData={monthData.transactions}/>
                 </>
             )

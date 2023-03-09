@@ -22,17 +22,15 @@ export class Transactions_t {
 }
 
 export default function TransactionTable(props: {transactionData: Array<Transaction_t>}){
-    console.log(props.transactionData)
-    var count = 0
+    let count = 0
     
     const transactionOutput = (transact: Transaction_t) => {
         count++
-        console.log(count)
         const [date, time] = transact.date.split(' ');
         const formattedDate = new Date(date).toLocaleDateString();
         const formattedTime = new Date(`${date}T${time}`).toLocaleTimeString([], {hour12: true, hour: 'numeric', minute: '2-digit'});
         return (
-            <TableRow>
+            <TableRow key={count}>
                 <TableCell>{formattedDate}</TableCell>
                 <TableCell>{formattedTime}</TableCell>
                 <TableCell>{transact.cost}</TableCell>

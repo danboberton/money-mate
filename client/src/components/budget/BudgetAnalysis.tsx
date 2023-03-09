@@ -12,6 +12,8 @@ import {
     TableCell,
     TableHeader, TableRow
 } from "grommet";
+import CategoryOutcome from "./CategoryOutcome";
+import {BudgetCategory_t} from "./BudgetCategory";
 
 export class BudgetAnalysis_t{
     month: number;
@@ -30,22 +32,46 @@ export class BudgetAnalysis_t{
     }
 }
 
-export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
+export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budget: Budget_t}){
 
-    const budgetCategory = (outcome: BudgetOutcome_t) =>{
+    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number, key: number) =>{
 
         return(
-            <TableRow>
+            <TableRow key={key}>
                 <TableCell>{outcome.category}</TableCell>
-                <TableCell>$ {outcome.outcome}</TableCell>
+                <TableCell><CategoryOutcome outcome={outcome.outcome} capacity={capacity}/></TableCell>
             </TableRow>
         )
     }
 
-    const mapCategories = (outcomes: Array<BudgetOutcome_t>) =>{
+    // TODO: This is CRAZY inefficient, maybe the data structures should be redesigned/this logic moved to the back end
+    const getCapacityByBudgetName = (name: string, budget: Budget_t) => {
+        for (let category of budget.budgetCategories){
+            if (category.category === name){
+                return category.amount
+            }
+        }
+
+        console.log("ERROR: Couldn't find " + name + " in Budget_t.budgetCategories")
+        return 0
+    }
+    const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
+        let keyCount = 0;
+
+        return(
+            <>
+                {outcomes.map((outcome) => {
+                    let capacity: number = getCapacityByBudgetName(outcome.category, budget)
+                    return(budgetCategory(outcome, capacity, keyCount++))
+            })}
+            </>
+        )
+    }
+
+    const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
         return(
            <TableBody>
-               {outcomes.map((outcome) => budgetCategory(outcome))}
+               {combineBudgetCapacityAndOutcome(outcomes, budget)}
            </TableBody>
         )
     }
@@ -68,7 +94,7 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
                             </TableCell>
                         </TableRow>
                     </TableHeader>
-                    {mapCategories(props.analysis.budgetOutcomes)}
+                    {mapCategories(props.analysis.budgetOutcomes, props.budget)}
                 </Table>
 
             </>
