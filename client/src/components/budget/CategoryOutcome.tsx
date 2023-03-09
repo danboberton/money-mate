@@ -14,7 +14,7 @@ export default function CategoryOutcome(props: {outcome: number, capacity: numbe
     }
     return(
         <div>
-            $ {props.outcome}
+            $ {props.outcome} / $ {props.capacity}
             <div style={colorBarStyle(props.outcome, props.capacity)} ></div>
         </div>
     )

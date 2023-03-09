@@ -13,6 +13,7 @@ import {
     TableHeader, TableRow
 } from "grommet";
 import CategoryOutcome from "./CategoryOutcome";
+import {BudgetCategory_t} from "./BudgetCategory";
 
 export class BudgetAnalysis_t{
     month: number;
@@ -43,24 +44,34 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
         )
     }
 
-    // TODO: This is CRAZY inefficient, maybe the data structures should be redesigned
+    // TODO: This is CRAZY inefficient, maybe the data structures should be redesigned/this logic moved to the back end
     const getCapacityByBudgetName = (name: string, budget: Budget_t) => {
+        for (let category of budget.budgetCategories){
+            if (category.category === name){
+                return category.amount
+            }
+        }
 
+        console.log("ERROR: Couldn't find " + name + " in Budget_t.budgetCategories")
+        return 0
     }
     const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
 
         return(
-            outcomes.map((outcome) => {
-                let capacity: number = budget.budgetCategories[outcome.category].amount;
-                    budgetCategory(outcome, capacity))
-            }
+            <>
+                {outcomes.map((outcome) => {
+                    let capacity: number = getCapacityByBudgetName(outcome.category, budget)
+                    return(budgetCategory(outcome, capacity))
+
+            })}
+            </>
         )
     }
 
     const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
         return(
            <TableBody>
-               {}
+               {combineBudgetCapacityAndOutcome(outcomes, budget)}
            </TableBody>
         )
     }
@@ -83,7 +94,7 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
                             </TableCell>
                         </TableRow>
                     </TableHeader>
-                    {mapCategories(props.analysis.budgetOutcomes)}
+                    {mapCategories(props.analysis.budgetOutcomes, props.budget)}
                 </Table>
 
             </>
