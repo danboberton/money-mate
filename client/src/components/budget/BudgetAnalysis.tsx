@@ -12,6 +12,7 @@ import {
     TableCell,
     TableHeader, TableRow
 } from "grommet";
+import CategoryOutcome from "./CategoryOutcome";
 
 export class BudgetAnalysis_t{
     month: number;
@@ -30,22 +31,33 @@ export class BudgetAnalysis_t{
     }
 }
 
-export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t}){
+export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budget: Budget_t}){
 
-    const budgetCategory = (outcome: BudgetOutcome_t) =>{
+    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number) =>{
 
         return(
             <TableRow>
                 <TableCell>{outcome.category}</TableCell>
-                <TableCell>$ {outcome.outcome}</TableCell>
+                <TableCell><CategoryOutcome outcome={outcome.outcome} capacity={capacity}/></TableCell>
             </TableRow>
         )
     }
 
-    const mapCategories = (outcomes: Array<BudgetOutcome_t>) =>{
+    const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
+        for (outcome of outcomes){
+            
+        }
+        return()
+        outcomes.map((outcome) => {
+            let capacity: number =
+                budgetCategory(outcome, capacity))
+        }
+    }
+
+    const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
         return(
            <TableBody>
-               {outcomes.map((outcome) => budgetCategory(outcome))}
+               {}
            </TableBody>
         )
     }
