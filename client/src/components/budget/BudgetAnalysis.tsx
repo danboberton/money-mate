@@ -34,10 +34,10 @@ export class BudgetAnalysis_t{
 
 export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budget: Budget_t}){
 
-    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number) =>{
+    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number, key: number) =>{
 
         return(
-            <TableRow>
+            <TableRow key={key}>
                 <TableCell>{outcome.category}</TableCell>
                 <TableCell><CategoryOutcome outcome={outcome.outcome} capacity={capacity}/></TableCell>
             </TableRow>
@@ -56,13 +56,13 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
         return 0
     }
     const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
+        let keyCount = 0;
 
         return(
             <>
                 {outcomes.map((outcome) => {
                     let capacity: number = getCapacityByBudgetName(outcome.category, budget)
-                    return(budgetCategory(outcome, capacity))
-
+                    return(budgetCategory(outcome, capacity, keyCount++))
             })}
             </>
         )

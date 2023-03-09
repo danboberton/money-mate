@@ -30,7 +30,7 @@ export default function TransactionTable(props: {transactionData: Array<Transact
         const formattedDate = new Date(date).toLocaleDateString();
         const formattedTime = new Date(`${date}T${time}`).toLocaleTimeString([], {hour12: true, hour: 'numeric', minute: '2-digit'});
         return (
-            <TableRow>
+            <TableRow key={count}>
                 <TableCell>{formattedDate}</TableCell>
                 <TableCell>{formattedTime}</TableCell>
                 <TableCell>{transact.cost}</TableCell>
