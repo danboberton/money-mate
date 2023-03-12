@@ -10,6 +10,7 @@ export default function CategoryOutcome(props: {outcome: number, capacity: numbe
             width: fullBarLength + "px",
             height: "20px",
         }
+
         const colorBarStyle = {
             display: "block",
             backgroundColor: "blue",
