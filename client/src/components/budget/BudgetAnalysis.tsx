@@ -14,6 +14,7 @@ import {
 } from "grommet";
 import CategoryOutcome from "./CategoryOutcome";
 import {BudgetCategory_t} from "./BudgetCategory";
+import { StringMappingType } from "typescript";
 
 export class BudgetAnalysis_t{
     month: number;
@@ -32,13 +33,17 @@ export class BudgetAnalysis_t{
     }
 }
 
-export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budget: Budget_t}){
+export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budget: Budget_t, setFilterCategory: React.Dispatch<React.SetStateAction<string>>}){
+    
+    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number, key: number, setFilterCategory: React.Dispatch<React.SetStateAction<string>>) =>{
 
-    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number, key: number) =>{
+        function handleClick() {
+            props.setFilterCategory(outcome.category)
+        }
 
         return(
             <TableRow key={key}>
-                <TableCell>{outcome.category}</TableCell>
+                <TableCell onClick={handleClick}>{outcome.category}</TableCell>
                 <TableCell><CategoryOutcome outcome={outcome.outcome} capacity={capacity}/></TableCell>
             </TableRow>
         )
@@ -55,23 +60,24 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
         console.log("ERROR: Couldn't find " + name + " in Budget_t.budgetCategories")
         return 0
     }
-    const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
+
+    const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t, setFilterCategory: React.Dispatch<React.SetStateAction<string>>) =>{
         let keyCount = 0;
 
         return(
             <>
                 {outcomes.map((outcome) => {
                     let capacity: number = getCapacityByBudgetName(outcome.category, budget)
-                    return(budgetCategory(outcome, capacity, keyCount++))
+                    return(budgetCategory(outcome, capacity, keyCount++, setFilterCategory))
             })}
             </>
         )
     }
 
-    const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
+    const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t, setFilterCategory: React.Dispatch<React.SetStateAction<string>>) =>{
         return(
            <TableBody>
-               {combineBudgetCapacityAndOutcome(outcomes, budget)}
+               {combineBudgetCapacityAndOutcome(outcomes, budget, setFilterCategory)}
            </TableBody>
         )
     }
@@ -94,7 +100,7 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
                             </TableCell>
                         </TableRow>
                     </TableHeader>
-                    {mapCategories(props.analysis.budgetOutcomes, props.budget)}
+                    {mapCategories(props.analysis.budgetOutcomes, props.budget, props.setFilterCategory)}
                 </Table>
 
             </>

@@ -21,7 +21,7 @@ export class Transactions_t {
     }
 }
 
-export default function TransactionTable(props: {transactionData: Array<Transaction_t>}){
+export default function TransactionTable(props: {transactionData: Array<Transaction_t>, filterCategory: string}){
     let count = 0
     
     const transactionOutput = (transact: Transaction_t) => {
@@ -38,7 +38,23 @@ export default function TransactionTable(props: {transactionData: Array<Transact
             </TableRow>
         )
     }
-    const listTransactions = (transacts: Array<Transaction_t>) =>{
+    const listTransactions = (transacts: Array<Transaction_t>, filterCategory: string) =>{
+
+        if (filterCategory !== ''){
+            const filteredTransacts = transacts.filter(transact => {
+                if (transact.budgetClassifications != null){
+                    return transact.budgetClassifications.toLowerCase().includes(filterCategory.toLowerCase())
+                }
+                return false; 
+            }
+            );
+
+            return(
+                <TableBody>
+                    {filteredTransacts.map((transact) => transactionOutput(transact))}
+                </TableBody>
+            )
+        }
 
         return(
             <TableBody>
@@ -66,7 +82,8 @@ export default function TransactionTable(props: {transactionData: Array<Transact
                         </TableCell>
                     </TableRow>
                 </TableHeader>
-                {listTransactions(props.transactionData)}
+                
+                {listTransactions(props.transactionData, props.filterCategory)}
             </Table>  
         )
     }
