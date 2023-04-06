@@ -13,7 +13,7 @@ export default function GeneratePieGraph(props: {totalExpense: number, totalUnca
     for(let i of props.outcomes){
         //to get spent (vs earned)
         if(i.outcome > 0){
-            //If category exists and isn't a salary (earned money)
+            //If category exists and isn't a salary (earned money)                  //there must be a better way to check for salary
             if(i.category != undefined && !categories.includes(i.category) && i.category != "Regular Salary"){
                 categories.push(i.category);
                 // Calculate how much of the total income was spent toward a specific category in % and add to its own array
@@ -21,7 +21,8 @@ export default function GeneratePieGraph(props: {totalExpense: number, totalUnca
             }
         }
     }
-    //Some funky error hurdling since all categorical values can be positive or negative 
+    //Some funky hurdling since all categorical values can be positive or negative
+    //It basically says that if there is only one category in spent then it should be 100% of the pie graph
     if(props.totalUncategorized > 0){
         outcomePercentage.push(Math.round((props.totalUncategorized/props.totalExpense) * 100));
         categories.push("Uncategorized");
@@ -35,7 +36,7 @@ export default function GeneratePieGraph(props: {totalExpense: number, totalUnca
         labels: categories,
         datasets: [
             {
-                label: 'Spent',
+                label: ' Spent',
                 data: outcomePercentage,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
