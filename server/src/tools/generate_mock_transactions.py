@@ -13,7 +13,7 @@ def rnd_transactionID(target: dict):
 
 
 def rnd_cost(target: dict):
-    target["cost"] = round(random.randrange(-100, 5000, 1) + random.uniform(1.00, .01), 2)
+    target["cost"] = round(random.randrange(-100, 500, 1) + random.uniform(1.00, .01), 2)
 
 
 def random_date(start, end):
