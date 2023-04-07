@@ -10,6 +10,7 @@ export default function GeneratePieGraph(props: {totalExpense: number, totalUnca
     let categories:string[] = [];
     let outcomePercentage = [];
     //Iterate through budgetOutcomes 
+
     for(let i of props.outcomes){
         //to get spent (vs earned)
         if(i.outcome > 0){
@@ -17,10 +18,11 @@ export default function GeneratePieGraph(props: {totalExpense: number, totalUnca
             if(i.category != undefined && !categories.includes(i.category) && i.category != "Regular Salary"){
                 categories.push(i.category);
                 // Calculate how much of the total income was spent toward a specific category in % and add to its own array
-                outcomePercentage.push(Math.round((i.outcome/props.totalIncome) * 100));
+                outcomePercentage.push(Math.round((i.outcome/props.totalExpense) * 100));
             }
         }
     }
+    /*      total uncategorized is giving funky numbers rn in the mock so we'll ignore this variable for now in the graph
     //Some funky hurdling since all categorical values can be positive or negative
     //It basically says that if there is only one category in spent then it should be 100% of the pie graph
     if(props.totalUncategorized > 0){
@@ -31,7 +33,7 @@ export default function GeneratePieGraph(props: {totalExpense: number, totalUnca
             outcomePercentage[0] = 100;
         }
     }
-
+    */
     const data = {
         labels: categories,
         datasets: [
@@ -55,11 +57,12 @@ export default function GeneratePieGraph(props: {totalExpense: number, totalUnca
                     'rgba(255, 159, 64, 1)',
                   ],
             }
-        ]
+        ],
     };
 
     return( 
         <Doughnut   data={data}
+                    
         />
     );
 }
