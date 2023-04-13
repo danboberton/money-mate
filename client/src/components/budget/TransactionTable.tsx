@@ -1,5 +1,5 @@
 import {Transaction_t} from "./Transaction";
-import {useState} from "react";
+import {useState, FC } from "react";
 import {
     Button,
     Card,
@@ -86,19 +86,27 @@ export default function TransactionTable(props: {transactionData: Array<Transact
             setSortBy(cellData);
         }
 
-        const TableHeaderButton = ({columnName: () => void;
-            sortConfig: string;
-            toggleSort: boolean;}) => {
-            const isSorting = sortConfig.key === columnName.toLowerCase();
-            const sortDirection = isSorting ? sortConfig.direction : null;
-        
-            const handleClick = () => {
-                if (!isSorting) {
-                    toggleSort(columnName.toLowerCase(), 'ascending');
-                } else if (sortDirection === 'ascending') {
-                    toggleSort(columnName.toLowerCase(), 'descending');
-            }
+
+        type TableHeaderButtonProps = {
+        onClick: () => void;
+        label: string;
+        sortAscending?: boolean;
         };
+
+        const TableHeaderButton: FC<TableHeaderButtonProps> = ({
+        onClick,
+        label,
+        sortAscending = true,
+        }) => {
+        return (
+            <button type="button" onClick={onClick}>
+            {label} {sortAscending ? '▲' : '▼'}
+            </button>
+        );
+        };
+
+export default TableHeaderButton;
+
         
 
         return (
