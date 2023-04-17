@@ -33,17 +33,13 @@ export class BudgetAnalysis_t{
     }
 }
 
-export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budget: Budget_t, setFilterCategory: React.Dispatch<React.SetStateAction<string>>}){
+export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budget: Budget_t}){
     
-    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number, key: number, setFilterCategory: React.Dispatch<React.SetStateAction<string>>) =>{
-
-        function handleClick() {
-            props.setFilterCategory(outcome.category)
-        }
+    const budgetCategory = (outcome: BudgetOutcome_t, capacity: number, key: number) =>{
 
         return(
             <TableRow key={key}>
-                <TableCell onClick={handleClick}>{outcome.category}</TableCell>
+                <TableCell>{outcome.category}</TableCell>
                 <TableCell><CategoryOutcome outcome={outcome.outcome} capacity={capacity}/></TableCell>
             </TableRow>
         )
@@ -61,23 +57,23 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
         return 0
     }
 
-    const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t, setFilterCategory: React.Dispatch<React.SetStateAction<string>>) =>{
+    const combineBudgetCapacityAndOutcome = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
         let keyCount = 0;
 
         return(
             <>
                 {outcomes.map((outcome) => {
                     let capacity: number = getCapacityByBudgetName(outcome.category, budget)
-                    return(budgetCategory(outcome, capacity, keyCount++, setFilterCategory))
+                    return(budgetCategory(outcome, capacity, keyCount++))
             })}
             </>
         )
     }
 
-    const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t, setFilterCategory: React.Dispatch<React.SetStateAction<string>>) =>{
+    const mapCategories = (outcomes: Array<BudgetOutcome_t>, budget: Budget_t) =>{
         return(
            <TableBody>
-               {combineBudgetCapacityAndOutcome(outcomes, budget, setFilterCategory)}
+               {combineBudgetCapacityAndOutcome(outcomes, budget)}
            </TableBody>
         )
     }
@@ -100,7 +96,7 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
                             </TableCell>
                         </TableRow>
                     </TableHeader>
-                    {mapCategories(props.analysis.budgetOutcomes, props.budget, props.setFilterCategory)}
+                    {mapCategories(props.analysis.budgetOutcomes, props.budget)}
                 </Table>
 
             </>

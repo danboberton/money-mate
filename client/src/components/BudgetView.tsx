@@ -7,7 +7,6 @@ import {fetchPOST} from "../api/request";
 
 export default function BudgetView(){
     const [monthData, setMonthData] = useState<GetMonthResponse_t | undefined>(undefined)
-    const [filterCategory, setFilterCategory] = useState('')
 
     const body = { request: "getMonth", month: 1, year: 2023}
     const monthRequest: RequestInit = {
@@ -30,7 +29,7 @@ export default function BudgetView(){
             return(
                 <>
                     <BudgetInfo budget={monthData.budget}/>
-                    <BudgetAnalysis analysis={monthData.budgetAnalysis} budget={monthData.budget} setFilterCategory={setFilterCategory}/>
+                    <BudgetAnalysis analysis={monthData.budgetAnalysis} budget={monthData.budget}/>
                     <TransactionTable transactionData={monthData.transactions}/>
                 </>
             )
