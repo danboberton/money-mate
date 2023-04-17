@@ -1,91 +1,80 @@
+import { useState } from "react";
+import { Box, DataTable, Page, Layer, Form, FormField, PageContent, Card, CardBody, Button } from "grommet";
+import {Filter} from "grommet-icons";
 import {Transaction_t} from "./Transaction";
-import {
-    Button,
-    Card,
-    CardBody,
-    Heading,
-    CardFooter,
-    CardHeader,
-    Page,
-    PageContent,
-    Paragraph, Table, TableBody,
-    TableCell,
-    TableHeader, TableRow
-} from "grommet";
 
-export class Transactions_t {
-    public transactions: Array<Transaction_t>;
+const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t[]}) => {
 
-    constructor(transactions: Array<Transaction_t>) {
-        this.transactions = transactions;
-    }
-}
+    const [showModal, setShowModal] = useState(false);
+    const [sortP, setSortP] = useState<{ property: string; direction: "asc" | "desc" }>({
+    property: "date",
+    direction: "asc",
+    });
 
-export default function TransactionTable(props: {transactionData: Array<Transaction_t>, filterCategory: string}){
-    let count = 0
-    
-    const transactionOutput = (transact: Transaction_t) => {
-        count++
-        const [date, time] = transact.date.split(' ');
-        const formattedDate = new Date(date).toLocaleDateString();
-        const formattedTime = new Date(`${date}T${time}`).toLocaleTimeString([], {hour12: true, hour: 'numeric', minute: '2-digit'});
-        return (
-            <TableRow key={count}>
-                <TableCell>{formattedDate}</TableCell>
-                <TableCell>{formattedTime}</TableCell>
-                <TableCell>{transact.cost}</TableCell>
-                <TableCell>{transact.budgetClassifications}</TableCell>
-            </TableRow>
-        )
-    }
-    const listTransactions = (transacts: Array<Transaction_t>, filterCategory: string) =>{
+    const [filters, setFilters] = useState<{ startDate: string; endDate: string; minAmount: string; maxAmount: string; budgetClassification: string }>({
+        startDate: "",
+        endDate: "",
+        minAmount: "",
+        maxAmount: "",
+        budgetClassification: "",
+      });
 
-        if (filterCategory !== ''){
-            const filteredTransacts = transacts.filter(transact => {
-                if (transact.budgetClassifications != null){
-                    return transact.budgetClassifications.toLowerCase().includes(filterCategory.toLowerCase())
-                }
-                return false; 
+    const filteredTransactions = transactionData.filter((transaction) => {
+        if (filters.startDate) {
+            const transactionDate = new Date(transaction.date);
+            if (transactionDate < new Date(filters.startDate)) {
+                return false;
             }
-            );
-
-            return(
-                <TableBody>
-                    {filteredTransacts.map((transact) => transactionOutput(transact))}
-                </TableBody>
-            )
         }
+        if (filters.endDate) {
+            const transactionDate = new Date(transaction.date);
+            if (transactionDate > new Date(filters.endDate)) {
+                return false;
+            }
+        }
+        if (filters.minAmount) {
+            if (transaction.cost < parseFloat(filters.minAmount)) {
+                return false;
+            }
+        }
+        if (filters.maxAmount) {
+            if (transaction.cost > parseFloat(filters.maxAmount)) {
+                return false;
+            }
+        }
+        let notEqual: boolean = filters.budgetClassification !== transaction.budgetClassifications;
+        if (filters.budgetClassification && !transaction.budgetClassification && notEqual) {
+            return false;
+        }
+        return true;
+    });
 
-        return(
-            <TableBody>
-                {transacts.map((transact) => transactionOutput(transact))}
-            </TableBody>
-        )
-    }  
-    
-    const transactionsTable = () => {
-        return (
-            <Table>
-                <TableHeader>
-                    <TableRow>
-                        <TableCell scope={"col"} border={"bottom"}>
-                            Date
-                        </TableCell>
-                        <TableCell scope={"col"} border={"bottom"}>
-                            Time
-                        </TableCell>
-                        <TableCell scope={"col"} border={"bottom"}>
-                            Amount
-                        </TableCell>
-                        <TableCell scope={"col"} border={"bottom"}>
-                            Category
-                        </TableCell>
-                    </TableRow>
-                </TableHeader>
-                
-                {listTransactions(props.transactionData, props.filterCategory)}
-            </Table>  
-        )
+    const sortTransactions = filteredTransactions.sort((a, b) => {
+        const sortPropertyA = a[sortP.property];
+        const sortPropertyB = b[sortP.property];
+
+        if (sortPropertyA < sortPropertyB) {
+            return sortP.direction === "asc" ? -1 : 1;
+        }
+        if (sortPropertyA > sortPropertyB) {
+            return sortP.direction === "asc" ? 1 : -1;
+        }
+        return 0;
+    });
+    const [transactionsOut, setTransactionsOut] = useState<Transaction_t[]>(sortTransactions);
+
+    const handleFilterChange = (fieldName: string, fieldValue: string) => {
+        setFilters({ ...filters, [fieldName]: fieldValue });
+    };
+
+    function handleFilterSubmit() {
+        setTransactionsOut(sortTransactions);
+        setShowModal(false);
+    };
+
+    function handleClickOutside() {
+        setTransactionsOut(sortTransactions);
+        setShowModal(false);
     }
 
     return (
@@ -96,8 +85,63 @@ export default function TransactionTable(props: {transactionData: Array<Transact
                 </PageContent>
             </Page>
             <Card  min-height="large" width="large" background="light-1">
-                <CardBody overflow="auto" min-height="300px" pad="medium">{transactionsTable()}</CardBody>
-            </Card>
-        </>   
-    )
-}
+                <CardBody overflow="auto" min-height="300px" pad="medium">{
+                    <Box>
+                        <Box margin={{ top: "medium" }}>
+                            <DataTable
+                                columns={[
+                                { property: "date", header: "Date", sortable: true },
+                                { property: "cost", header: "Amount", sortable: true },
+                                { property: "budgetClassifications", header: "Budget Classifications", sortable: true },
+                                {
+                                    property: 'edit',
+                                    header: (
+                                        <Filter onClick={() => setShowModal(true)}/>
+                                      ),
+                                    sortable: false
+                                  }
+                                ]}
+                                data={transactionsOut}
+                                sortable
+                            />
+                        </Box>
+                            {showModal && (
+                                <Layer onEsc={() => setShowModal(false)} onClickOutside={() => handleClickOutside()}>
+                                    <Box pad="medium">
+                                        <Form onSubmit={handleFilterSubmit}>
+                                        <FormField label="Start Date">
+                                            <input type="date" name="startDate" value={filters.startDate} onChange={(e) => handleFilterChange("startDate", e.target.value)} />
+                                        </FormField>
+                                        <FormField label="End Date">
+                                            <input type="date" name="endDate" value={filters.endDate} onChange={(e) => handleFilterChange("endDate", e.target.value)} />
+                                        </FormField>
+                                        <FormField label="Minimum Amount">
+                                            <input type="number" name="minAmount" value={filters.minAmount} onChange={(e) => handleFilterChange("minAmount", e.target.value)} />
+                                        </FormField>
+                                        <FormField label="Maximum Amount">
+                                            <input type="number" name="maxAmount" value={filters.maxAmount} onChange={(e) => handleFilterChange("maxAmount", e.target.value)} />
+                                        </FormField>
+                                        <FormField label="Budget Classification">
+                                            <select name="budgetClassification" value={filters.budgetClassification} onChange={(e) => handleFilterChange("budgetClassification", e.target.value)}>
+                                            <option value=""></option>
+                                            <option value="Entertainment">Entertainment</option>
+                                            <option value="Groceries">Groceries</option>
+                                            <option value="Regular Salary">Regular Salary</option>
+                                            </select>
+                                        </FormField>
+                                        <Box direction="row" justify="end" margin={{ top: "medium" }}>
+                                            <Button label="Clear Filters" onClick={() => setFilters({ startDate: "", endDate: "", minAmount: "", maxAmount: "", budgetClassification: "" })} />
+                                            <Button type="submit" label="Apply Filters" />
+                                        </Box>
+                                        </Form>
+                                    </Box>
+                                </Layer>
+                            )}
+                    </Box>
+                }</CardBody>
+             </Card>
+        </> 
+  );
+};
+
+export default TransactionsTable;

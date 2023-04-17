@@ -31,7 +31,7 @@ export default function BudgetView(){
                 <>
                     <BudgetInfo budget={monthData.budget}/>
                     <BudgetAnalysis analysis={monthData.budgetAnalysis} budget={monthData.budget} setFilterCategory={setFilterCategory}/>
-                    <TransactionTable transactionData={monthData.transactions} filterCategory={filterCategory}/>
+                    <TransactionTable transactionData={monthData.transactions}/>
                 </>
             )
         } else {
