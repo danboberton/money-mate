@@ -5,6 +5,7 @@ export class Transaction_t {
     public description: string;
     public budgetClassifications: string;
     public month: number;
+    [key: string]: any; // Index signature
 
     constructor(txID: string, cost: number, date: string, description: string, budgetClassifications: string, month: number) {
         this.txID = txID;
