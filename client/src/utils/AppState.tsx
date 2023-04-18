@@ -3,7 +3,8 @@
 export type AppNav = "" 
                    | "budget" 
                    | "settings"
-                   | "profile";
+                   | "profile"
+                   | "about";
 
 // App Wide state 
 export interface AppState{
