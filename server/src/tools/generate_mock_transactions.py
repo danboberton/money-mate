@@ -13,7 +13,7 @@ def rnd_transactionID(target: dict):
 
 
 def rnd_cost(target: dict):
-    target["cost"] = round(random.randrange(-99999, 99999, 1) + random.uniform(1.00, .01), 2)
+    target["cost"] = round(random.randrange(-100, 500, 1) + random.uniform(1.00, .01), 2)
 
 
 def random_date(start, end):
@@ -35,7 +35,7 @@ def rnd_date(target: dict):
 
 def rnd_classification(target: dict, empty=True):
     MOCK_CLASSIFICATIONS = ["Groceries", "Auto", "Rent", "Entertainment", "Utilities"]
-
+    empty = False
     if empty:
         target["budgetClassifications"] = None
     else:
@@ -47,8 +47,8 @@ def rnd_description(target: dict):
 
 
 def rnd_month(target: dict):
-    # target["month"] = random.randint(1, 12)
-    target["month"] = 1
+     target["month"] = random.randint(1, 12)
+    #target["month"] = 1
 
 
 # generates an array of size n objects

@@ -1,5 +1,6 @@
 import {BudgetOutcome_t} from "./BudgetOutcome";
 import {Budget_t} from "./Budget";
+import GeneratePieGraph from "./VisualBudgetGraph";
 import {
     Button,
     Card,
@@ -98,6 +99,14 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
                     </TableHeader>
                     {mapCategories(props.analysis.budgetOutcomes, props.budget)}
                 </Table>
+                <div style={{height:"50%", width:"50%"}}>
+                    <GeneratePieGraph 
+                        totalExpense={props.analysis.totalExpense} 
+                        totalUncategorized={props.analysis.totalUncategorized}
+                        outcomes={props.analysis.budgetOutcomes}
+                        totalIncome={props.analysis.totalIncome}
+                    ></GeneratePieGraph>
+                </div>
 
             </>
         )
