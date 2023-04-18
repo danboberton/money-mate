@@ -20,9 +20,9 @@ def get_budget_analysis(tx: dict, budget: dict, month: int):
             elif category["category"] in curtx["budgetClassifications"]:
                 category_total += curtx["cost"]
                 if category["type"] == "monthlyExpense": total_expense += curtx["cost"]
-                if category["type"] == "monthlyIncome": total_income += curtx["cost"]
-            else:
-                total_uncategorized += curtx["cost"]
+                elif category["type"] == "monthlyIncome": total_income += curtx["cost"]
+                else: total_uncategorized += curtx["cost"]
+
 
         category_outcome["outcome"] = round(category_total, 2)
         budget_outcomes.append(category_outcome)
