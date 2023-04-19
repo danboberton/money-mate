@@ -11,7 +11,9 @@ import {
     PageContent,
     Paragraph, Table, TableBody,
     TableCell,
-    TableHeader, TableRow
+    TableHeader, TableRow,
+    Box,
+    Heading
 } from "grommet";
 import CategoryOutcome from "./CategoryOutcome";
 import {BudgetCategory_t} from "./BudgetCategory";
@@ -82,39 +84,47 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
 
         return(
             <>
-                Month: {props.analysis.month}<br/>
-                Total Income: ${props.analysis.totalIncome}<br/>
-                Total Spent: ${props.analysis.totalExpense}<br/>
-                Total Uncategorized: ${props.analysis.totalUncategorized}<br/>
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableCell scope={"col"} border={"bottom"}>
-                                Category
-                            </TableCell>
-                            <TableCell scope={"col"} border={"bottom"}>
-                                Outcome
-                            </TableCell>
-                        </TableRow>
-                    </TableHeader>
-                    {mapCategories(props.analysis.budgetOutcomes, props.budget)}
-                </Table>
-                <div style={{height:"50%", width:"50%"}}>
-                    <GeneratePieGraph 
-                        totalExpense={props.analysis.totalExpense} 
-                        totalUncategorized={props.analysis.totalUncategorized}
-                        outcomes={props.analysis.budgetOutcomes}
-                        totalIncome={props.analysis.totalIncome}
-                    ></GeneratePieGraph>
-                </div>
+                {/* <Card justify="center" align="center" width="90%" background="light-1" margin={{left: "auto", right: "auto", top: "2%", bottom: "2%"}}> */}
+                    
+                        <Box margin="small">
+                            
+                            Month: {props.analysis.month}<br/>
+                            Total Income: ${props.analysis.totalIncome}<br/>
+                            Total Spent: ${props.analysis.totalExpense}<br/>
+                            Total Uncategorized: ${props.analysis.totalUncategorized}<br/>
+                            <Table margin={{top: "4%", bottom: "6%"}}>
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableCell scope={"col"} border={"bottom"}>
+                                            Category
+                                        </TableCell>
+                                        <TableCell scope={"col"} border={"bottom"}>
+                                            Outcome
+                                        </TableCell>
+                                    </TableRow>
+                                </TableHeader>
+                                {mapCategories(props.analysis.budgetOutcomes, props.budget)}
+                            </Table>
+                            <GeneratePieGraph  
+                                totalExpense={props.analysis.totalExpense} 
+                                totalUncategorized={props.analysis.totalUncategorized}
+                                outcomes={props.analysis.budgetOutcomes}
+                                totalIncome={props.analysis.totalIncome}
+                            ></GeneratePieGraph>
 
+                        </Box>
+                        
+                {/* </Card> */}
+ 
             </>
         )
     }
     return(
-        <Card  height="large" width="large" background="light-1">
-            <CardHeader pad="medium"></CardHeader>
-            <CardBody pad="medium">{budgetOutcomes()}</CardBody>
+        <Card justify="center" align="center" width="60%" background="light-2" margin={{left: "auto", right: "auto", top: "2%"}}>
+            <CardHeader align="center" justify="center">
+                <Heading level={2}>Budget Analysis</Heading>
+            </CardHeader>
+            <CardBody round="small" background="light-4" width="75%" overflow="auto" pad="large">{budgetOutcomes()}</CardBody>
         </Card>
         )
 }
