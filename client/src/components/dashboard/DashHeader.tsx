@@ -32,6 +32,7 @@ export function DashHeader({state, setState}: DashHeaderProps){
           { label: 'Home', onClick: () => setAppView(state, setState, "") },
           { label: 'Budget', onClick: () => setAppView(state, setState, "budget")},
           { label: 'Profile', onClick: () => setAppView(state, setState, "profile")},
+          { label: 'About', onClick: () => setAppView(state, setState, "about")},
           { label: 'Settings', onClick: () => setAppView(state, setState, "settings")}
       ]}
       />

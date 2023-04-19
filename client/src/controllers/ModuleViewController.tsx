@@ -2,6 +2,7 @@ import { Box } from "grommet";
 import { AppState, SetAppState } from "../utils/AppState";
 import BudgetView from "../components/BudgetView";
 import { Dashhome } from "../components/dashboard/Dashhome";
+import AboutPage from "../components/about/About";
 
 
 interface ModuleViewControllerProps{
@@ -33,6 +34,12 @@ export function ModuleViewController({state, setState}: ModuleViewControllerProp
             return (
                 <Box>
 
+                </Box>
+            );
+        case "about":
+            return (
+                <Box>
+                    <AboutPage/>
                 </Box>
             );
     }
