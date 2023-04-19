@@ -1,27 +1,3 @@
-// import {Budget_t} from "./Budget";
-// import {Page, PageContent, Paragraph, Card, CardHeader, Heading} from "grommet";
-
-
-
-
-// export default function BudgetInfo(props: {budget: Budget_t}){
-
-//     return(
-//         <>
-//             <Card justify="center" align="center" width="60%" background="light-2" margin={{left: "auto", right: "auto", top: "2%", bottom: "2%"}}>
-//                 <CardHeader align="center" justify="center">
-//                     <Heading level={2}>Budget Information</Heading>
-//                 </CardHeader>
-//                 <Heading margin="small" level={3}>Budget Name</Heading>
-//                 <Heading level={4}>Budget Desciption</Heading>
-//                 <Paragraph>
-//                     Budget Desciption: {props.budget.budgetName}
-//                 </Paragraph>
-//             </Card>
-//         </>
-//     )
-// }
-
 import { useState } from "react";
 import {
   Box,
