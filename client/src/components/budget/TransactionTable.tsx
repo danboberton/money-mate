@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Box, DataTable, CardFooter, CardHeader, Heading, Page, Layer, Header, Form, FormField, PageContent, Card, CardBody, Button } from "grommet";
-import {Filter} from "grommet-icons";
-import {Transaction_t} from "./Transaction";
+import { Filter } from "grommet-icons";
+import { Transaction_t } from "./Transaction";
 
-const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t[]}) => {
+const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t[] }) => {
 
     const [showModal, setShowModal] = useState(false);
     const [sortP, setSortP] = useState<{ property: string; direction: "asc" | "desc" }>({
-    property: "date",
-    direction: "asc",
+        property: "date",
+        direction: "asc",
     });
 
     const [filters, setFilters] = useState<{ startDate: string; endDate: string; minAmount: string; maxAmount: string; budgetClassification: string }>({
@@ -17,7 +17,7 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
         minAmount: "",
         maxAmount: "",
         budgetClassification: "",
-      });
+    });
 
     const filteredTransactions = transactionData.filter((transaction) => {
         if (filters.startDate) {
@@ -79,14 +79,15 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
 
     return (
         <>
-            <Card justify="center" align="center" width="60%" background="light-2" margin={{left: "auto", right: "auto", top: "2%", bottom: "2%"}}>
+            <Card justify="center" align="center" width="70%" background="light-2" margin={{left: "auto", right: "auto", top: "2%", bottom: "2%"}}>
                 <CardHeader align="center" justify="center">
                     <Heading level={2}>Transactions</Heading>
                 </CardHeader>
-                <CardBody round="small" background="light-4" overflow="auto" min-height="300px" pad="large">{
+                <CardBody round="small" background="light-4" pad="large">
                     <Box margin="small">
-                        <Box margin="small">
-                            <DataTable pad={{horizontal: "medium", vertical: "small"}}
+                        <Box margin="small" height="300px" overflow="auto">
+                            <DataTable pad={{horizontal: "large", vertical: "small"}}
+                                pin
                                 columns={[
                                 { property: "date", header: "Date", sortable: true },
                                 { property: "cost", header: "Amount", sortable: true },
@@ -104,9 +105,9 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
                             />
                         </Box>
                             {showModal && (
-                                <Layer onEsc={() => setShowModal(false)} onClickOutside={() => handleClickOutside()}>
-                                    <Box pad="medium">
-                                        <Form onSubmit={handleFilterSubmit}>
+                            <Layer onEsc={() => setShowModal(false)} onClickOutside={() => handleClickOutside()}>
+                                <Box pad="medium">
+                                    <Form onSubmit={handleFilterSubmit}>
                                         <FormField label="Start Date">
                                             <input type="date" name="startDate" value={filters.startDate} onChange={(e) => handleFilterChange("startDate", e.target.value)} />
                                         </FormField>
@@ -121,30 +122,30 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
                                         </FormField>
                                         <FormField label="Category">
                                             <select name="budgetClassification" value={filters.budgetClassification} onChange={(e) => handleFilterChange("budgetClassification", e.target.value)}>
-                                            <option value=""></option>
-                                            <option value="Utilities">Utilities</option>
-                                            <option value="Auto">Auto</option>
-                                            <option value="Rent">Rent</option>
-                                            <option value="Entertainment">Entertainment</option>
-                                            <option value="Groceries">Groceries</option>
-                                            <option value="Regular Salary">Regular Salary</option>
+                                                <option value=""></option>
+                                                <option value="Utilities">Utilities</option>
+                                                <option value="Auto">Auto</option>
+                                                <option value="Rent">Rent</option>
+                                                <option value="Entertainment">Entertainment</option>
+                                                <option value="Groceries">Groceries</option>
+                                                <option value="Regular Salary">Regular Salary</option>
                                             </select>
                                         </FormField>
                                         <Box direction="row" justify="end" margin={{ top: "medium" }}>
                                             <Button label="Clear Filters" onClick={() => setFilters({ startDate: "", endDate: "", minAmount: "", maxAmount: "", budgetClassification: "" })} />
                                             <Button type="submit" label="Apply Filters" />
                                         </Box>
-                                        </Form>
-                                    </Box>
-                                </Layer>
-                            )}
-                    </Box>
-                }</CardBody>
-                <CardFooter align="center" justify="center" pad="medium">
-                </CardFooter>
-             </Card>
-        </> 
-  );
-};
-
-export default TransactionsTable;
+                                    </Form>
+                                </Box>
+                            </Layer>
+                        )}
+                        </Box>
+                    </CardBody>
+                    <CardFooter align="center" justify="center" pad="medium">
+                    </CardFooter>
+                 </Card>
+            </> 
+      );
+    };
+    
+    export default TransactionsTable;
