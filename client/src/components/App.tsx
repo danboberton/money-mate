@@ -6,10 +6,10 @@ import FooterComponent from "./footer/Footer"
 
 import '../static/styles/components/dashboard/DashHeader.scss';
 import { Dashboard } from "./dashboard/Dashboard";
-import { defaultState } from "../utils/constants";
+import { budgetState } from "../utils/constants";
 
 function App() {
-  const [appState, setAppState] = useState(defaultState)
+  const [appState, setAppState] = useState(budgetState)
   return (
     <Grommet className="App" theme={grommet}>
       <Dashboard state={appState} setState={setAppState}/>

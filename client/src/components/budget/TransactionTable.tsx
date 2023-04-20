@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, DataTable, Page, Layer, Form, FormField, PageContent, Card, CardBody, Button } from "grommet";
+import { Box, DataTable, CardFooter, CardHeader, Heading, Page, Layer, Header, Form, FormField, PageContent, Card, CardBody, Button } from "grommet";
 import {Filter} from "grommet-icons";
 import {Transaction_t} from "./Transaction";
 
@@ -79,20 +79,18 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
 
     return (
         <>
-            <Page kind="full">
-                <PageContent background="light-3">
-                    <h2>Transactions</h2>
-                </PageContent>
-            </Page>
-            <Card  min-height="large" width="large" background="light-1">
-                <CardBody overflow="auto" min-height="300px" pad="medium">{
-                    <Box>
-                        <Box margin={{ top: "medium" }}>
-                            <DataTable
+            <Card justify="center" align="center" width="60%" background="light-2" margin={{left: "auto", right: "auto", top: "2%", bottom: "2%"}}>
+                <CardHeader align="center" justify="center">
+                    <Heading level={2}>Transactions</Heading>
+                </CardHeader>
+                <CardBody round="small" background="light-4" overflow="auto" min-height="300px" pad="large">{
+                    <Box margin="small">
+                        <Box margin="small">
+                            <DataTable pad={{horizontal: "medium", vertical: "small"}}
                                 columns={[
                                 { property: "date", header: "Date", sortable: true },
                                 { property: "cost", header: "Amount", sortable: true },
-                                { property: "budgetClassifications", header: "Budget Classifications", sortable: true },
+                                { property: "budgetClassifications", header: "Category", sortable: true },
                                 {
                                     property: 'edit',
                                     header: (
@@ -121,9 +119,12 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
                                         <FormField label="Maximum Amount">
                                             <input type="number" name="maxAmount" value={filters.maxAmount} onChange={(e) => handleFilterChange("maxAmount", e.target.value)} />
                                         </FormField>
-                                        <FormField label="Budget Classification">
+                                        <FormField label="Category">
                                             <select name="budgetClassification" value={filters.budgetClassification} onChange={(e) => handleFilterChange("budgetClassification", e.target.value)}>
                                             <option value=""></option>
+                                            <option value="Utilities">Utilities</option>
+                                            <option value="Auto">Auto</option>
+                                            <option value="Rent">Rent</option>
                                             <option value="Entertainment">Entertainment</option>
                                             <option value="Groceries">Groceries</option>
                                             <option value="Regular Salary">Regular Salary</option>
@@ -139,6 +140,8 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
                             )}
                     </Box>
                 }</CardBody>
+                <CardFooter align="center" justify="center" pad="medium">
+                </CardFooter>
              </Card>
         </> 
   );

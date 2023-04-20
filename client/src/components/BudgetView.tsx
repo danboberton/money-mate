@@ -4,6 +4,8 @@ import BudgetAnalysis from "./budget/BudgetAnalysis";
 import TransactionTable from "./budget/TransactionTable";
 import {GetMonthResponse_t} from "./budget/GetMonthResponse";
 import {fetchPOST} from "../api/request";
+import {Page,Box, PageContent, Paragraph, Card, CardHeader, Heading, PageHeader, Header} from "grommet";
+import {Money} from "grommet-icons";
 
 export default function BudgetView(){
     const [monthData, setMonthData] = useState<GetMonthResponse_t | undefined>(undefined)
@@ -39,9 +41,16 @@ export default function BudgetView(){
     }
 
     return(
-        <>
-        <h1>Budget View</h1>
-        { data() }
-        </>
+        <Page justify="center" align="center" width="40%" background="light-1">
+            <Header>
+                <Box direction="row" align="center" gap="small">
+                    <Money color="black" size="large"></Money>
+                    <Box>
+                    <Heading>Budget View</Heading>
+                    </Box>
+                </Box>
+            </Header>
+    {data()}
+  </Page>
     )
 }
