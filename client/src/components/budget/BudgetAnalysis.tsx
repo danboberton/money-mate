@@ -84,39 +84,32 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
 
         return(
             <>
-                {/* <Card justify="center" align="center" width="90%" background="light-1" margin={{left: "auto", right: "auto", top: "2%", bottom: "2%"}}> */}
+                <Box margin="small">
                     
-                        <Box margin="small">
-                            
-                            Month: {props.analysis.month}<br/>
-                            Total Income: ${props.analysis.totalIncome}<br/>
-                            Total Spent: ${props.analysis.totalExpense}<br/>
-                            Total Uncategorized: ${props.analysis.totalUncategorized}<br/>
-                            <Table margin={{top: "4%", bottom: "6%"}}>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableCell scope={"col"} border={"bottom"}>
-                                            Category
-                                        </TableCell>
-                                        <TableCell scope={"col"} border={"bottom"}>
-                                            Outcome
-                                        </TableCell>
-                                    </TableRow>
-                                </TableHeader>
-                                {mapCategories(props.analysis.budgetOutcomes, props.budget)}
-                            </Table>
-                            <GeneratePieGraph  
-                                totalExpense={props.analysis.totalExpense} 
-                                totalUncategorized={props.analysis.totalUncategorized}
-                                outcomes={props.analysis.budgetOutcomes}
-                                totalIncome={props.analysis.totalIncome}
-                            ></GeneratePieGraph>
-
-
-                        </Box>
-                        
-                {/* </Card> */}
- 
+                    Month: {props.analysis.month}<br/>
+                    Total Income: ${props.analysis.totalIncome}<br/>
+                    Total Spent: ${props.analysis.totalExpense}<br/>
+                    Total Uncategorized: ${props.analysis.totalUncategorized}<br/>
+                    <Table margin={{top: "4%", bottom: "6%"}}>
+                        <TableHeader>
+                            <TableRow>
+                                <TableCell scope={"col"} border={"bottom"}>
+                                    Category
+                                </TableCell>
+                                <TableCell scope={"col"} border={"bottom"}>
+                                    Outcome
+                                </TableCell>
+                            </TableRow>
+                        </TableHeader>
+                        {mapCategories(props.analysis.budgetOutcomes, props.budget)}
+                    </Table>
+                    <GeneratePieGraph  
+                        totalExpense={props.analysis.totalExpense} 
+                        totalUncategorized={props.analysis.totalUncategorized}
+                        outcomes={props.analysis.budgetOutcomes}
+                        totalIncome={props.analysis.totalIncome}
+                    ></GeneratePieGraph>
+                </Box>
             </>
         )
     }
