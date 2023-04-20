@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, DataTable, CardHeader, Heading, Page, Layer, Header, Form, FormField, PageContent, Card, CardBody, Button } from "grommet";
+import { Box, DataTable, CardFooter, CardHeader, Heading, Page, Layer, Header, Form, FormField, PageContent, Card, CardBody, Button } from "grommet";
 import {Filter} from "grommet-icons";
 import {Transaction_t} from "./Transaction";
 
@@ -86,7 +86,7 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
                 <CardBody round="small" background="light-4" overflow="auto" min-height="300px" pad="large">{
                     <Box margin="small">
                         <Box margin="small">
-                            <DataTable
+                            <DataTable pad={{horizontal: "medium", vertical: "small"}}
                                 columns={[
                                 { property: "date", header: "Date", sortable: true },
                                 { property: "cost", header: "Amount", sortable: true },
@@ -140,6 +140,8 @@ const TransactionsTable = ({ transactionData }: { transactionData: Transaction_t
                             )}
                     </Box>
                 }</CardBody>
+                <CardFooter align="center" justify="center" pad="medium">
+                </CardFooter>
              </Card>
         </> 
   );

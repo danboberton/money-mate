@@ -112,6 +112,7 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
                                 totalIncome={props.analysis.totalIncome}
                             ></GeneratePieGraph>
 
+
                         </Box>
                         
                 {/* </Card> */}
@@ -124,7 +125,9 @@ export default function BudgetAnalysis(props: {analysis: BudgetAnalysis_t, budge
             <CardHeader align="center" justify="center">
                 <Heading level={2}>Budget Analysis</Heading>
             </CardHeader>
-            <CardBody round="small" background="light-4" width="75%" overflow="auto" pad="large">{budgetOutcomes()}</CardBody>
+            <CardBody round="small" background="light-4" width="80%" overflow="auto" pad="large">{budgetOutcomes()}</CardBody>
+            <CardFooter align="center" justify="center" pad="medium">
+            </CardFooter>
         </Card>
         )
 }

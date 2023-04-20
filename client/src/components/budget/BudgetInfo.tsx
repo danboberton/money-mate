@@ -33,7 +33,7 @@ export default function BudgetInfo(props: {budget: Budget_t}) {
         <CardHeader justify="center" align="center">
           <Heading level={2}>Budget Information</Heading>
         </CardHeader>
-        <Box justify="center" align="center" pad={{bottom: "medium"}}>
+        <Box justify="center" align="center" pad={{horizontal: "large", bottom: "medium"}}>
           <Heading level={3}>Budget Name</Heading>
           <div style={{
                 display: "flex",
