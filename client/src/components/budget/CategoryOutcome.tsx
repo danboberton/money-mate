@@ -1,8 +1,6 @@
-import {Budget_t} from "./Budget";
-
-export default function CategoryOutcome(props: {outcome: number, capacity: number}){
+export default function CategoryOutcome(props: { outcome: number, capacity: number }) {
     const fullBarLength: number = 150;
-    const colorBar = (outcome: number, capacity: number)=> {
+    const colorBar = (outcome: number, capacity: number) => {
         const containerStyle = {
             alignItems: "left",
             display: "block",
@@ -17,18 +15,19 @@ export default function CategoryOutcome(props: {outcome: number, capacity: numbe
             width: "100px",
         }
 
-        return(
+        return (
             <div style={containerStyle}>
                 <div style={colorBarStyle}></div>
             </div>
 
         )
     }
-    return(
+    return (
         <div style={{
             display: "flex"
         }}>
-            <div style={{width: "49%"}}>$ {props.outcome} / $ {props.capacity}</div><div>{colorBar(props.outcome, props.capacity)}</div>
+            <div style={{width: "49%"}}>$ {props.outcome} / $ {props.capacity}</div>
+            <div>{colorBar(props.outcome, props.capacity)}</div>
         </div>
     )
 }
