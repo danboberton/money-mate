@@ -4,27 +4,27 @@
   "budgetCategories": [
     {
       "category": "Regular Salary",
-      "amount": 300.00,
+      "amount": 8000.00,
       "type": "monthlyIncome"
     },
     {
       "category": "Groceries",
-      "amount": 300.00,
+      "amount": 2500.00,
       "type": "monthlyExpense"
     },
     {
       "category": "Entertainment",
-      "amount": 300.00,
+      "amount": 3000.00,
       "type": "monthlyExpense"
     },
     {
       "category": "Auto",
-      "amount": 300.00,
+      "amount": 5000.00,
       "type": "monthlyExpense"
     },
     {
       "category": "Utilities",
-      "amount": 300.00,
+      "amount": 1000.00,
       "type": "monthlyExpense"
     }
   ],
