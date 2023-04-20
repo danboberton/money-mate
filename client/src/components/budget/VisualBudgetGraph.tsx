@@ -37,7 +37,6 @@ export default function GeneratePieGraph(props: { totalExpense: number, totalUnc
         labels: categories,
         datasets: [
             {
-                label: ' % Spent',
                 data: outcomePercentage,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -63,7 +62,7 @@ export default function GeneratePieGraph(props: { totalExpense: number, totalUnc
             tooltip: {
                 callbacks: {
                     label: (item) =>
-                        ` ${item.formattedValue}%`,
+                        ` ${item.formattedValue}% of total spent`,
                 },
             },
         },
