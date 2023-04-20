@@ -1,13 +1,8 @@
 import {Doughnut} from 'react-chartjs-2';
 import {BudgetOutcome_t} from "./BudgetOutcome";
-import {Chart, ArcElement, Tooltip, Legend, ScaleChartOptions, ChartData, ChartOptions} from 'chart.js'
+import {Chart, ArcElement, Tooltip, Legend, ChartData, ChartOptions} from 'chart.js'
 
 Chart.register(ArcElement, Tooltip, Legend);
-
-interface PieProps {
-    options: ChartOptions<'doughnut'>;
-    data: ChartData<'doughnut'>;
-}
 
 export default function GeneratePieGraph(props: { totalExpense: number, totalUncategorized: number, outcomes: Array<BudgetOutcome_t>, totalIncome: number }) {
 
