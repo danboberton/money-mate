@@ -1,4 +1,5 @@
 import { Box, Grid, Avatar, Heading, Text, Paragraph } from 'grommet';
+import Ernest from "./Ernest-Duckworth.jpeg"
 
 export default function AboutPage() {
   return (
@@ -46,11 +47,14 @@ export default function AboutPage() {
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
-        <Avatar size="2xl" background="dark-2">ED</Avatar>
+        <Avatar size="2xl" src={Ernest}/>
       </Box>
       <Box>
+        <Text style={{fontWeight: "bold"}} size="large" margin={{right:"20px"}}>
+          Ernest Duckworth
+        </Text>
         <Text margin={{right:"20px"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit, vulputate lectus vel, mollis odio.
+          Undergraduate at Colorado State University studying Computer Science (Software Engineering)
         </Text>
       </Box>
       </Grid>
