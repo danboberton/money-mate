@@ -20,6 +20,9 @@ export default function AboutPage() {
         <Avatar size="2xl" src={Zach} />
       </Box>
       <Box>
+        <Text style={{fontWeight: "bold"}} size="large" margin={{right:"20px"}}>
+          Zachary Lowe
+        </Text>
         <Text margin={{right:"20px"}}>
           Undergraduate student at CSU studying Computer Science. Areas of Interest: Enterprise IT, Software Development, and Systems Administration
         </Text>
@@ -36,7 +39,7 @@ export default function AboutPage() {
         <Avatar size="2xl" src={Andrew}/>
       </Box>
       <Box>
-        <Text style={{fontWeight: "bold"}} size="large" margin={{right:"20px"}}>
+      <Text style={{fontWeight: "bold"}} size="large" margin={{right:"20px"}}>
           Andrew Derr
         </Text>
         <Text margin={{right:"20px"}}>
