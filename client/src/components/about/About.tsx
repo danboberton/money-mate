@@ -1,4 +1,5 @@
 import { Box, Grid, Avatar, Heading, Text, Paragraph } from 'grommet';
+import Zach from "./zlowe.jpeg";
 
 export default function AboutPage() {
   return (
@@ -14,7 +15,7 @@ export default function AboutPage() {
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
-        <Avatar size="2xl" background="dark-2">ZL</Avatar>
+        <Avatar size="2xl" src={Zach} />
       </Box>
       <Box>
         <Text margin={{right:"20px"}}>
