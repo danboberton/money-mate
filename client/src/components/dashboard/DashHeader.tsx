@@ -20,7 +20,6 @@ export function DashHeader({state, setState}: DashHeaderProps){
       </Box>
       <Box
         className='DashTitle'
-        onClick={() => setAppView(state, setState, "")}
       >
         Money Mate
       </Box>
@@ -29,11 +28,8 @@ export function DashHeader({state, setState}: DashHeaderProps){
         icon={<MenuIcon/>}
         margin="small"
         items={[
-          { label: 'Home', onClick: () => setAppView(state, setState, "") },
           { label: 'Budget', onClick: () => setAppView(state, setState, "budget")},
-          { label: 'Profile', onClick: () => setAppView(state, setState, "profile")},
           { label: 'About', onClick: () => setAppView(state, setState, "about")},
-          { label: 'Settings', onClick: () => setAppView(state, setState, "settings")}
       ]}
       />
     </Header>

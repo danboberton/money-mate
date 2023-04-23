@@ -1,7 +1,6 @@
 import { Box } from "grommet";
 import { AppState, SetAppState } from "../utils/AppState";
 import BudgetView from "../components/BudgetView";
-import { Dashhome } from "../components/dashboard/Dashhome";
 import AboutPage from "../components/about/About";
 
 
@@ -12,12 +11,6 @@ interface ModuleViewControllerProps{
 
 export function ModuleViewController({state, setState}: ModuleViewControllerProps) {
     switch(state.nav){
-        case "":
-            return (
-                <Box>
-                    <Dashhome state={state} setState={setState}/>
-                </Box>
-            );
         case "budget":
             return (
                 <Box>
@@ -26,14 +19,14 @@ export function ModuleViewController({state, setState}: ModuleViewControllerProp
             );
         case "settings":
             return (
-                <Box>
-
+                <Box alignSelf="center">
+                   No Settings
                 </Box>
             );
         case "profile":
             return (
                 <Box>
-
+                  No profile
                 </Box>
             );
         case "about":

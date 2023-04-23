@@ -1,7 +1,6 @@
 
 // controls the page that is being viewed
-export type AppNav = "" 
-                   | "budget" 
+export type AppNav = "budget" 
                    | "settings"
                    | "profile"
                    | "about";
