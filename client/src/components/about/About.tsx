@@ -18,7 +18,7 @@ export default function AboutPage() {
       </Box>
       <Box>
         <Text margin={{right:"20px"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit, vulputate lectus vel, mollis odio.
+          Undergraduate student at CSU studying Computer Science. Areas of Interest: Enterprise IT, Software Development, and Systems Administration
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
