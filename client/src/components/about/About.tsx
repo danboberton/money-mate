@@ -1,4 +1,7 @@
 import { Box, Grid, Avatar, Heading, Text, Paragraph } from 'grommet';
+import Ernest from "./Ernest-Duckworth.jpeg"
+import Zach from "./zlowe.jpeg";
+import Andrew from "./andrewPic.jpeg";
 
 export default function AboutPage() {
   return (
@@ -14,11 +17,14 @@ export default function AboutPage() {
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
-        <Avatar size="2xl" background="dark-2">ZL</Avatar>
+        <Avatar size="2xl" src={Zach} />
       </Box>
       <Box>
+        <Text style={{fontWeight: "bold"}} size="large" margin={{right:"20px"}}>
+          Zachary Lowe
+        </Text>
         <Text margin={{right:"20px"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit, vulputate lectus vel, mollis odio.
+          Undergraduate student at CSU studying Computer Science. Areas of Interest: Enterprise IT, Software Development, and Systems Administration
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
@@ -30,11 +36,14 @@ export default function AboutPage() {
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
-        <Avatar size="2xl" background="dark-2">AD</Avatar>
+        <Avatar size="2xl" src={Andrew}/>
       </Box>
       <Box>
+      <Text style={{fontWeight: "bold"}} size="large" margin={{right:"20px"}}>
+          Andrew Derr
+        </Text>
         <Text margin={{right:"20px"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit, vulputate lectus vel, mollis odio.
+          Undergraduate senior studying Computer Science (Software Engineering) with a minor in Data Science.
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
@@ -46,11 +55,14 @@ export default function AboutPage() {
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
-        <Avatar size="2xl" background="dark-2">ED</Avatar>
+        <Avatar size="2xl" src={Ernest}/>
       </Box>
       <Box>
+        <Text style={{fontWeight: "bold"}} size="large" margin={{right:"20px"}}>
+          Ernest Duckworth
+        </Text>
         <Text margin={{right:"20px"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit, vulputate lectus vel, mollis odio.
+          Undergraduate at Colorado State University studying Computer Science (Software Engineering)
         </Text>
       </Box>
       </Grid>
