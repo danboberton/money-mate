@@ -2,6 +2,7 @@ import { Box, Grid, Avatar, Heading, Text, Paragraph } from 'grommet';
 import Ernest from "./Ernest-Duckworth.jpeg"
 import Zach from "./zlowe.jpeg";
 import Andrew from "./andrewPic.jpeg";
+import Dan from "./dan.jpeg"
 
 export default function AboutPage() {
   return (
@@ -9,11 +10,11 @@ export default function AboutPage() {
       <Heading>About Us</Heading>
       <Grid columns={['1fr', '1fr', '1fr', '1fr']} gap="medium">
       <Box margin={{left:"20px"}}>
-        <Avatar size="2xl" background="dark-2">DB</Avatar>
+        <Avatar size="2xl" background="dark-2" src={Dan}/>
       </Box>
       <Box>
         <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit, vulputate lectus vel, mollis odio.
+          Senior Computer Science Major concentrating in Software Engineering. Obsessed with designing and building solutions to problems.
         </Text>
       </Box>
       <Box margin={{left:"20px"}}>
