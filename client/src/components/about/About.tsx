@@ -77,6 +77,7 @@ export default function AboutPage() {
                     </Text>
                 </Box>
             </Grid>
+            <hr style={{color: "#444444", backgroundColor: "#444444", height: "2px", width: "75%", borderRadius: "10px"}}/>
             <Paragraph>
                 Welcome to Money Mate, a personal financial application created as part of CSU's CIS 320 Project
                 Management course. We built this app to help you manage your personal finances and take control of your
