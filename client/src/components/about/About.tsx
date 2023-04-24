@@ -3,6 +3,7 @@ import Ernest from "./Ernest-Duckworth.jpeg"
 import Zach from "./zlowe.jpeg";
 import Andrew from "./andrewPic.jpeg";
 import Dan from "./dan.jpeg"
+import Mike from "./mike.jpeg"
 
 export default function AboutPage() {
     return (
@@ -56,13 +57,14 @@ export default function AboutPage() {
                     </Text>
                 </Box>
                 <Box margin={{left: "20px"}} align={"center"}>
-                    <Avatar size="2xl" background="dark-2">MC</Avatar>
+                    <Avatar size="2xl" src={Mike}/>
                 </Box>
                 <Box>
+                    <Text style={{fontWeight: "bold"}} size="large" margin={{right: "20px"}}>
+                        Michael Cucina
+                    </Text>
                     <Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus
-                        aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit,
-                        vulputate lectus vel, mollis odio.
+                        Undergraduate at CSU majoring in Computer Science. Graduating in Fall 2023.
                     </Text>
                 </Box>
                 <Box margin={{left: "20px"}} align={"center"}>
