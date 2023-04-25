@@ -38,10 +38,11 @@ export default function AboutPage() {
                     <Avatar size="2xl" background="dark-2">AF</Avatar>
                 </Box>
                 <Box>
+                    <Text style={{fontWeight: "bold"}} size="large" margin={{right: "20px"}}>
+                       Antonio Felix
+                    </Text>
                     <Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut libero eget felis maximus
-                        aliquet ac vel augue. Integer vel magna in diam blandit tristique. Nunc id lorem blandit,
-                        vulputate lectus vel, mollis odio.
+                      Undergraduate at Colorado State University studying Computer Science
                     </Text>
                 </Box>
                 <Box margin={{left: "20px"}} align={"center"}>
